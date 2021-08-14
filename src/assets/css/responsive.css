@@ -1,0 +1,27 @@
+@media screen and (max-width: 768px) {
+    .nav_container {
+        @apply p-2
+    }
+
+    .nav_left {
+        display: none;
+    }
+
+    .nav_left_responsive {
+        display: block;
+    }
+
+    .button_showMenu {
+        @apply text-2xl
+    }
+
+    .nav_Button {
+        @apply text-sm px-4 py-2
+    }
+
+}
+
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 1280px) {}

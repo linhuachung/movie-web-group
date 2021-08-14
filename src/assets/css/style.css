@@ -1,0 +1,95 @@
+/* font */
+* {
+    @apply font-sans
+}
+
+/* Header */
+.header {
+    @apply bg-black;
+    color: rgba(255, 255, 255, 0.61);
+}
+
+.nav_container {
+    @apply flex justify-between w-10/12 m-auto py-2;
+    align-items: center
+}
+
+.nav_left_responsive {
+    display: none
+}
+
+.nav_left {
+    @apply flex;
+    align-items: center
+}
+
+.nav_left img {
+    width: 70%;
+
+}
+
+.nav_left nav ul {
+    @apply flex justify-around
+}
+
+nav ul li {
+    @apply px-5
+}
+
+
+nav li {
+    @apply text-xl
+}
+
+nav .nav_item {
+    @apply duration-500
+}
+
+nav .nav_item:hover {
+    color: rgb(255, 255, 255);
+}
+
+.nav_Button {
+    @apply bg-blue-600 text-white px-6 py-2.5 text-xl rounded-full duration-300 border-blue-600 border-2
+}
+
+.nav_Button:hover {
+    @apply bg-transparent border-white;
+
+}
+
+.animation_sidebar {
+    animation: sidebar_animate 0.8s
+}
+
+@keyframes sidebar_animate {
+    0% {
+        transform: translateX(-50%);
+    }
+}
+
+.nav_container_responsive {
+    position: absolute;
+    @apply top-0 w-full h-full;
+    background-color: rgba(44, 44, 44, 0.274);
+}
+
+.nav_container_responsive .nav_title {
+    @apply text-4xl bg-black w-1/2 p-10
+}
+
+.nav_container_responsive nav {
+    @apply w-1/2 bg-black h-full
+}
+
+.nav_container_responsive nav .title_sideBar img {
+    width: 20%;
+}
+
+.nav_container_responsive nav ul li {
+    @apply py-5 border-b-2 duration-300
+}
+
+.nav_container_responsive nav ul li:hover {
+    background-color: red;
+}

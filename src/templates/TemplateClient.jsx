@@ -1,10 +1,13 @@
 import React from "react";
+import Header from "../components/ClientComponents/Header/Header";
 
 function TemplateClient(props) {
   const { Component } = props;
   return (
     <div>
-      <header></header>
+      <header>
+        <Header />
+      </header>
       <main>
         <Component />
       </main>

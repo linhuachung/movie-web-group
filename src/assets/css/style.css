@@ -3,10 +3,32 @@
     @apply font-sans
 }
 
+img {
+    width: 100%
+}
+
 /* Header */
 .header {
-    @apply bg-black;
+    @apply w-full py-5;
     color: rgba(255, 255, 255, 0.61);
+    background: transparent;
+    position: absolute;
+    z-index: 100;
+}
+
+.header_scroll {
+    @apply w-full py-2 bg-black;
+    color: rgba(255, 255, 255, 0.61);
+    position: fixed;
+    z-index: 1000;
+    animation: nav_roll 0.3s
+}
+
+
+@keyframes nav_roll {
+    0% {
+        transform: translateY(-110%)
+    }
 }
 
 .nav_container {
@@ -42,11 +64,15 @@ nav li {
 }
 
 nav .nav_item {
-    @apply duration-500
+    @apply duration-500 text-white
 }
 
 nav .nav_item:hover {
-    color: rgb(255, 255, 255);
+    @apply text-blue-700
+}
+
+.active {
+    @apply text-blue-600 !important;
 }
 
 .nav_Button {
@@ -68,28 +94,38 @@ nav .nav_item:hover {
     }
 }
 
-.nav_container_responsive {
+
+
+
+/*  carousel */
+.carousel_arrowPrev {
     position: absolute;
-    @apply top-0 w-full h-full;
-    background-color: rgba(44, 44, 44, 0.274);
+    z-index: 100;
+    top: 30%;
+    left: 8%;
+    cursor: pointer;
+    color: rgba(128, 128, 128, 0.452);
+    @apply text-7xl duration-300
 }
 
-.nav_container_responsive .nav_title {
-    @apply text-4xl bg-black w-1/2 p-10
+.carousel_arrowPrev:hover {
+    @apply text-gray-300
 }
 
-.nav_container_responsive nav {
-    @apply w-1/2 bg-black h-full
+.carousel_arrowNext {
+    position: absolute;
+    z-index: 100;
+    top: 30%;
+    right: 8%;
+    cursor: pointer;
+    color: rgba(128, 128, 128, 0.452);
+    @apply text-7xl duration-300
 }
 
-.nav_container_responsive nav .title_sideBar img {
-    width: 20%;
+.carousel_arrowNext:hover {
+    @apply text-gray-300
 }
 
-.nav_container_responsive nav ul li {
-    @apply py-5 border-b-2 duration-300
-}
-
-.nav_container_responsive nav ul li:hover {
-    background-color: red;
+.slick-dots {
+    bottom: 25px !important;
 }

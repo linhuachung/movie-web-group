@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function SideBar(props) {
@@ -7,8 +7,8 @@ function SideBar(props) {
     <div>
       <div className="nav_container_responsive " onClick={handleShowSideBar}>
         <nav className="animation_sidebar">
-          <div className="title_sideBar">
-            <Link to="/">
+          <div className="title_div">
+            <Link to="/" className="title_sideBar">
               <img src="/image/LogoMovie.png" alt={""} />
               <p>Movie Start</p>
             </Link>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "./SideBar";
@@ -23,8 +23,27 @@ function Header() {
       window.removeEventListener("resize", showMenuRes);
     };
   }, []);
+
+  // Show navbar
+  const [show, setShow] = useState(false);
+  const controlNavbar = () => {
+    if (window.scrollY > 200) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  };
+  useEffect(() => {
+    // Hiện nav khi scroll xuống
+    window.addEventListener("scroll", controlNavbar);
+    // Xóa nav khi scroll lên cùng
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, []);
+
   return (
-    <div className="header">
+    <div className={`header ${show && `header_scroll nav_roll`}`}>
       <div className="nav_container ">
         <div className="nav_left_responsive">
           <button onClick={handleShowSideBar}>
@@ -32,30 +51,42 @@ function Header() {
           </button>
         </div>
         <div className="nav_left">
-          <Link to="/" className="nav_logo">
+          <NavLink to="/" className="nav_logo">
             <img src="/image/LogoMovie.png" alt={""} />
-          </Link>
+          </NavLink>
           <nav>
             <ul>
               <li>
-                <Link to="/" className="nav_item">
+                <NavLink to="/" className="nav_item " activeClassName="active">
                   Trang chủ
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/" className="nav_item">
+                <NavLink
+                  to="/phim"
+                  className="nav_item"
+                  activeClassName="active"
+                >
                   Phim
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/" className="nav_item">
+                <NavLink
+                  to="/thong-tin"
+                  className="nav_item"
+                  activeClassName="active"
+                >
                   Thông tin
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to="/" className="nav_item">
+                <NavLink
+                  to="/ho-tro"
+                  className="nav_item"
+                  activeClassName="active"
+                >
                   Hỗ trợ
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </nav>

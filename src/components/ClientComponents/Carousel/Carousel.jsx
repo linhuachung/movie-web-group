@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import {
   faChevronLeft,
   faChevronRight,
-  faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

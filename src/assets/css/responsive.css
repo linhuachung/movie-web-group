@@ -79,6 +79,27 @@
         bottom: 10px !important;
     }
 
+
+    /* footer */
+    footer .footer_container {
+        @apply grid grid-cols-1
+    }
+
+    footer .footer_logo {
+        display: none
+    }
+
+    .footer_container .footer_content .footerContent_center {
+        @apply flex flex-col justify-center
+    }
+
+    .footer_container .footer_content {
+        @apply p-2 text-gray-300 text-xs
+    }
+
+    .footer_container .footer_content .footerContent_center .logo_company {
+        @apply w-4/5;
+    }
 }
 
 

@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/ClientComponents/Footer/Footer";
 import Header from "../components/ClientComponents/Header/Header";
 
 function TemplateClient(props) {
@@ -8,9 +9,12 @@ function TemplateClient(props) {
       <header>
         <Header />
       </header>
-      <main>
+      <main className="bg-black">
         <Component />
       </main>
+      <footer className="p-0">
+        <Footer />
+      </footer>
     </div>
   );
 }

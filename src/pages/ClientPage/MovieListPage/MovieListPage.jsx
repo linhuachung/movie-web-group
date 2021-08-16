@@ -1,14 +1,13 @@
 import React from "react";
 import Carousel from "../../../components/ClientComponents/Carousel/Carousel";
-import SliderMovieList from "../../../components/ClientComponents/SliderMovieList/SliderMovieList";
 
-function Home() {
+function MovieListPage() {
   return (
     <div>
       <Carousel />
-      <SliderMovieList />
+      <div>asdflkjasdlkfjasd asdlkfsdalkfjasdlk</div>
     </div>
   );
 }
 
-export default Home;
+export default MovieListPage;

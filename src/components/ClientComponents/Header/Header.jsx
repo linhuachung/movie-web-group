@@ -57,13 +57,13 @@ function Header() {
           <nav>
             <ul>
               <li>
-                <NavLink to="/" className="nav_item " activeClassName="active">
+                <NavLink to="/" exact className="nav_item ">
                   Trang chủ
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  to="/phim"
+                  to="/danh-sach-phim"
                   className="nav_item"
                   activeClassName="active"
                 >

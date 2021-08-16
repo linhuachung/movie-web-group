@@ -129,3 +129,72 @@ nav .nav_item:hover {
 .slick-dots {
     bottom: 25px !important;
 }
+
+/* slider movie */
+.slider_movieList {
+    @apply w-1/2 m-auto mt-5
+}
+
+.arrowNext_forSlider {
+    right: -10%
+}
+
+.arrowPrev_forSlider {
+    left: -10%;
+}
+
+.card_slider {
+    @apply p-3
+}
+
+.card_slider img {
+    @apply h-full
+}
+
+.slider_content {
+    @apply mt-3
+}
+
+.title_SliderMovie {
+    @apply flex justify-center
+}
+
+.title_SliderMovie .title_sliderItem {
+    @apply text-2xl text-white p-2 duration-500 cursor-pointer
+}
+
+.title_SliderMovie .title_sliderItem:hover {
+    @apply text-blue-600 text-3xl
+}
+
+/* footer */
+footer {
+    @apply bg-gray-900 py-5 pb-0
+}
+
+.footer_container {
+    @apply grid grid-cols-3 gap-4 w-5/6 m-auto
+}
+
+.footer_container .footer_content {
+    @apply p-6 text-gray-300 text-lg
+}
+
+
+.footer_container .content_title {
+    @apply text-xl text-gray-200 text-center
+}
+
+.footer_container .footer_content .footerContent_center .logo_company {
+    display: grid;
+    grid-template-columns: 60px 60px 60px;
+    @apply gap-4 my-4 m-auto w-5/6 justify-center;
+}
+
+.footer_container .footer_content .footerContent_center .logo_company .logoCompany_item {
+    @apply w-12
+}
+
+.footer_container .footer_content .footerContent_right .footer_appLogo {
+    @apply flex my-4 justify-center
+}

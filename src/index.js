@@ -5,6 +5,7 @@ import "./assets/css/style.css";
 import "./assets/css/responsive.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "antd/dist/antd.css";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";

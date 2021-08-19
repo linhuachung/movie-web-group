@@ -25,11 +25,14 @@
         position: absolute;
         @apply top-0 w-full h-screen;
         background-color: rgba(44, 44, 44, 0.274);
+
     }
 
 
+
     .nav_container_responsive nav {
-        @apply w-1/2 bg-black h-full
+        @apply w-1/2 bg-black h-full;
+        z-index: 1000 !important;
     }
 
     .nav_container_responsive nav .title_sideBar img {
@@ -56,7 +59,7 @@
     /* carousel */
     .carousel_arrowPrev {
         position: absolute;
-        z-index: 1000;
+        z-index: 1;
         top: 30%;
         left: 8%;
         cursor: pointer;
@@ -67,7 +70,7 @@
 
     .carousel_arrowNext {
         position: absolute;
-        z-index: 1000;
+        z-index: 1;
         top: 30%;
         right: 8%;
         cursor: pointer;
@@ -79,6 +82,22 @@
         bottom: 10px !important;
     }
 
+    /* slider movie */
+    .slider_movieList {
+        @apply w-4/5
+    }
+
+    .slider_movieList .title_sliderItem {
+        @apply text-base
+    }
+
+
+
+
+    .slider_movieList .arrowPrev_forSlider,
+    .arrowNext_forSlider {
+        display: none;
+    }
 
     /* footer */
     footer .footer_container {
@@ -105,4 +124,8 @@
 
 @media screen and (max-width: 1024px) {}
 
-@media screen and (max-width: 1280px) {}
+@media screen and (max-width: 1280px) {
+    .slider_movieList {
+        @apply w-3/4
+    }
+}

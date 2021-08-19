@@ -3,7 +3,10 @@ import {
   followGetDetailMovieApi,
   followGetMovieListApi,
 } from "./ClientSaga/QuanLyPhimSaga";
-import { followGetTheaterApi } from "./ClientSaga/QuanLyRapSaga";
+import {
+  followGetInfoTheaterApi,
+  followGetTheaterApi,
+} from "./ClientSaga/QuanLyRapSaga";
 
 export function* rootSaga() {
   yield all([
@@ -12,5 +15,6 @@ export function* rootSaga() {
     followGetDetailMovieApi(),
     // Quản Lý Rạp
     followGetTheaterApi(),
+    followGetInfoTheaterApi(),
   ]);
 }

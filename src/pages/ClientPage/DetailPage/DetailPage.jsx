@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import BannerDetailpage from "../../../components/ClientComponents/BannerDetailPage/BannerDetailpage";
 import { GET_DETAIL_MOVIE_SAGA_TYPE } from "../../../redux/types/QuanLyPhimType/QuanLyPhimType";
 
 function DetailPage() {
@@ -19,8 +20,8 @@ function DetailPage() {
 
   return (
     <div>
-      <div className="detail_banner"></div>
-      <img src={detailMovie.hinhAnh} />
+      <BannerDetailpage detailMovie={detailMovie} />
+      {/* <img src={detailMovie.hinhAnh} /> */}
     </div>
   );
 }

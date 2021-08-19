@@ -7,7 +7,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import { GET_MOVIE_LIST_SAGA_TYPE } from "../../../redux/types/QuanLyPhimType/QuanLyPhimType";
-import ItemForSlider from "./ItemForSlider";
+import ItemForSliderIsStart from "./ItemForSliderIsStart";
+import ItemForSliderNotStart from "./ItemForSliderNotStart";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -45,7 +46,7 @@ function SliderMovieList() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 3,
           infinite: true,
           dots: true,
@@ -78,29 +79,68 @@ function SliderMovieList() {
 
   const movie = useSelector((state) => state.QuanLyPhimReducer.movieList);
 
-  const movieIsStart = movie.filter((item) => item.dangChieu === true);
-  const movieNotStart = movie.filter((item) => item.dangChieu === false);
-  console.log("phim đang chiếu ", movieIsStart);
-  console.log("phim chưa chiếu ", movieNotStart);
+  const [movieState, setMovieState] = useState(true);
 
-  const [movieState, setMovieState] = useState();
+  // const handleChoice = (status) => {
+  //   let classes = "title_sliderItem";
+  //   if (status) {
+  //     classes += " bg-gray-100";
+  //   }
+  //   return classes;
+  // };
   return (
     <div className="slider_movieList">
       <div className="title_SliderMovie">
-        <p className="title_sliderItem">Phim đang chiếu</p>
-        <p className="title_sliderItem">Phim sắp chiếu</p>
+        <p
+          className={`title_sliderItem ${movieState && `text_active`}`}
+          onClick={() => setMovieState(true)}
+        >
+          Phim đang chiếu
+        </p>
+        <p
+          className={`title_sliderItem ${!movieState && `text_active`}`}
+          onClick={() => setMovieState(false)}
+        >
+          Phim sắp chiếu
+        </p>
+        {/* <p
+          className={handleChoice(movieState)}
+          onClick={() => setMovieState(true)}
+        >
+          Phim đang chiếu
+        </p>
+        <p
+          className={handleChoice(!movieState)}
+          onClick={() => setMovieState(false)}
+        >
+          Phim sắp chiếu
+        </p> */}
       </div>
-      <Slider {...settings} className="slider_content">
-        {movie
-          .filter((item) => item.dangChieu === true)
-          .map((movieItem, index) => {
-            return (
-              <div key={index}>
-                <ItemForSlider movieItem={movieItem} />
-              </div>
-            );
-          })}
-      </Slider>
+      {movieState ? (
+        <Slider {...settings} className="slider_content">
+          {movie
+            .filter((item) => item.dangChieu === true)
+            .map((movieItem, index) => {
+              return (
+                <div key={index}>
+                  <ItemForSliderNotStart movieItem={movieItem} />
+                </div>
+              );
+            })}
+        </Slider>
+      ) : (
+        <Slider {...settings} className="slider_content">
+          {movie
+            .filter((item) => item.dangChieu === false)
+            .map((movieItem, index) => {
+              return (
+                <div key={index}>
+                  <ItemForSliderIsStart movieItem={movieItem} />
+                </div>
+              );
+            })}
+        </Slider>
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "./SideBar";
@@ -92,9 +92,12 @@ function Header() {
           </nav>
         </div>
         <div className="nav_right">
-          <div className="nav_Button">
-            <button>Đăng nhập</button>
-          </div>
+          <Link
+            to="/client/dang-nhap"
+            className="nav_Button hover:text-white duration-500"
+          >
+            Đăng nhập
+          </Link>
         </div>
       </div>
       {showSideBar ? <SideBar handleShowSideBar={handleShowSideBar} /> : null}

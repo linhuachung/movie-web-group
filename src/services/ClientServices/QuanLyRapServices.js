@@ -7,3 +7,10 @@ export function GetTheaterServices() {
     method: "GET",
   });
 }
+
+export function GetInfoTheaterServices() {
+  return axios({
+    url: `${DOMAIN}/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP11`,
+    method: "GET",
+  });
+}

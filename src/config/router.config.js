@@ -6,6 +6,7 @@ import Home from "../pages/ClientPage/Home/Home";
 import InfoMovie from "../pages/ClientPage/InfoMovie/InfoMovie";
 import Login from "../pages/ClientPage/Login/Login";
 import MovieListPage from "../pages/ClientPage/MovieListPage/MovieListPage";
+import Register from "../pages/ClientPage/Register/Register";
 
 export const clientRouters = [
   {
@@ -40,6 +41,11 @@ export const clientAuthorRouters = [
     path: "/client/dang-nhap",
     exact: true,
     Component: Login,
+  },
+  {
+    path: "/client/dang-ky",
+    exact: true,
+    Component: Register,
   },
 ];
 export const adminRouters = [

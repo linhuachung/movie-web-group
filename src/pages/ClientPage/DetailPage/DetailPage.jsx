@@ -21,7 +21,6 @@ function DetailPage() {
   return (
     <div>
       <BannerDetailpage detailMovie={detailMovie} />
-      {/* <img src={detailMovie.hinhAnh} /> */}
     </div>
   );
 }

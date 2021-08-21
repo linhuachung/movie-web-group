@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "./SideBar";
+import IconAfterLogin from "./IconAfterLogin";
 
 function Header() {
   // click to show side bar
@@ -41,6 +42,8 @@ function Header() {
       window.removeEventListener("scroll", controlNavbar);
     };
   }, []);
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div className={`header ${show && `header_scroll nav_roll`}`}>
@@ -92,12 +95,16 @@ function Header() {
           </nav>
         </div>
         <div className="nav_right">
-          <Link
-            to="/client/dang-nhap"
-            className="nav_Button hover:text-white duration-500"
-          >
-            Đăng nhập
-          </Link>
+          {user === null ? (
+            <Link
+              to="/client/dang-nhap"
+              className="nav_Button hover:text-white duration-500"
+            >
+              Đăng nhập
+            </Link>
+          ) : (
+            <IconAfterLogin />
+          )}
         </div>
       </div>
       {showSideBar ? <SideBar handleShowSideBar={handleShowSideBar} /> : null}

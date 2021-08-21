@@ -94,8 +94,25 @@ nav .nav_item:hover {
     }
 }
 
+/* icon after login */
+.avartar_content {
+    background-color: rgb(58, 57, 57) !important;
+    padding: 0 !important;
+    width: 200px !important;
+}
 
+.dropDown_item:first-child {
+    border-bottom: 1px solid rgba(245, 222, 179, 0.514) !important;
+}
 
+.button_dropdown {
+    padding: 12px 15px !important;
+    color: rgb(167, 167, 167);
+}
+
+.dropDown_item:hover .button_dropdown {
+    color: rgb(21, 66, 134) !important;
+}
 
 /*  carousel */
 .carousel_arrowPrev {
@@ -132,7 +149,7 @@ nav .nav_item:hover {
 
 /* slider movie */
 .slider_movieList {
-    @apply w-1/2 m-auto mt-5
+    @apply w-3/5 m-auto mt-5
 }
 
 .arrowNext_forSlider {
@@ -306,13 +323,19 @@ footer {
 /* Banner Detail */
 .banner_detailContainer {
     background-size: cover;
-    @apply h-screen
+    @apply h-full
 }
 
 .bannerOverlay {
-    @apply w-full h-screen;
+    @apply w-full h-full;
     background-color: #000000e0;
-    ;
+}
+
+.bannerOverlay .item_overlay {
+    @apply w-full h-screen grid grid-cols-2;
+
+    align-items: center;
+    justify-items: center;
 }
 
 .bannerOverlay .movie_img {
@@ -320,14 +343,21 @@ footer {
 }
 
 .bannerOverlay .movie-card {
-    position: absolute;
-    width: 15%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @apply left-1/4
 }
 
+.bannerOverlay .rate_film {
+    @apply relative right-1/4
+}
 
+.rate_film {
+    @apply w-36 bg-red-800 h-36 rounded-full relative;
+}
+
+.rate_film .num_rate {
+    @apply w-32 bg-white h-32 rounded-full absolute text-center;
+    top: 50%
+}
 
 /* movie card */
 
@@ -337,12 +367,13 @@ footer {
     width: 100%;
     max-width: 315px;
     border-radius: 10px;
+    position: relative;
 }
 
 .btnPlay {
     position: absolute;
     width: 35%;
-    top: 40%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
@@ -419,28 +450,350 @@ footer {
     font-size: 11px;
 }
 
+.film_Container {
+    top: 50%;
+}
+
+.banner_content {}
+
+
+
 
 /* login */
 .login_container {
-    @apply bg-green-700 h-screen relative
+    @apply h-screen relative;
+
+    background-image: url("../image/bg-onboarding.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.login_container form {
-    @apply absolute left-1/2 top-1/2 bg-white p-52;
+.login_container .form_content {
+    @apply absolute left-1/2 top-1/2 w-1/5;
     transform: translate(-50%, -50%);
 
 }
 
-.login_container .form_item {
+.login_container .form_content .input_form {
+    @apply w-full px-5 py-3 border rounded-full text-black text-lg;
+    transition: all 0.3s;
+}
+
+.login_container .form_content .input_form:focus {
+    outline: none;
+    @apply border border-blue-600 shadow-xl
+}
+
+.login_container .form_submit {
+    margin: 15px !important;
+
+}
+
+.login_container .form_submit .input_submit {
+    @apply text-base px-4 py-2
+}
+
+.form_register {
+    @apply m-4 text-center
+}
+
+.form_register p::after {
+    content: "";
+    position: absolute;
+    right: 75%;
+    top: 79.5%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 6.125rem;
+    border-radius: 0.5px;
+    background: rgb(169, 170, 173);
+}
+
+.form_register p::before {
+    content: "";
+    position: absolute;
+    left: 75%;
+    top: 79.5%;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 6.125rem;
+    border-radius: 0.5px;
+    background: rgb(169, 170, 173);
+}
+
+.input_register {
+    @apply text-white border-white py-1 px-4 text-base;
+    background-color: transparent;
+    transition: all 0.3s;
+}
+
+.input_register:hover {
+    @apply text-blue-600 border-blue-600 bg-blue-100;
+}
+
+
+.c100 .bar,
+.c100.p100 .fill,
+.c100.p51 .fill,
+.c100.p52 .fill,
+.c100.p53 .fill,
+.c100.p54 .fill,
+.c100.p55 .fill,
+.c100.p56 .fill,
+.c100.p57 .fill,
+.c100.p58 .fill,
+.c100.p59 .fill,
+.c100.p60 .fill,
+.c100.p61 .fill,
+.c100.p62 .fill,
+.c100.p63 .fill,
+.c100.p64 .fill,
+.c100.p65 .fill,
+.c100.p66 .fill,
+.c100.p67 .fill,
+.c100.p68 .fill,
+.c100.p69 .fill,
+.c100.p70 .fill,
+.c100.p71 .fill,
+.c100.p72 .fill,
+.c100.p73 .fill,
+.c100.p74 .fill,
+.c100.p75 .fill,
+.c100.p76 .fill,
+.c100.p77 .fill,
+.c100.p78 .fill,
+.c100.p79 .fill,
+.c100.p80 .fill,
+.c100.p81 .fill,
+.c100.p82 .fill,
+.c100.p83 .fill,
+.c100.p84 .fill,
+.c100.p85 .fill,
+.c100.p86 .fill,
+.c100.p87 .fill,
+.c100.p88 .fill,
+.c100.p89 .fill,
+.c100.p90 .fill,
+.c100.p91 .fill,
+.c100.p92 .fill,
+.c100.p93 .fill,
+.c100.p94 .fill,
+.c100.p95 .fill,
+.c100.p96 .fill,
+.c100.p97 .fill,
+.c100.p98 .fill,
+.c100.p99 .fill,
+.pie {
+    position: absolute;
+    border: .06em solid #e4ff09;
+    width: .88em;
+    height: .88em;
+    clip: rect(0, .5em, 1em, 0);
+    border-radius: 50%;
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0);
+}
+
+.c100.p100 .bar:after,
+.c100.p100 .fill,
+.c100.p51 .bar:after,
+.c100.p51 .fill,
+.c100.p52 .bar:after,
+.c100.p52 .fill,
+.c100.p53 .bar:after,
+.c100.p53 .fill,
+.c100.p54 .bar:after,
+.c100.p54 .fill,
+.c100.p55 .bar:after,
+.c100.p55 .fill,
+.c100.p56 .bar:after,
+.c100.p56 .fill,
+.c100.p57 .bar:after,
+.c100.p57 .fill,
+.c100.p58 .bar:after,
+.c100.p58 .fill,
+.c100.p59 .bar:after,
+.c100.p59 .fill,
+.c100.p60 .bar:after,
+.c100.p60 .fill,
+.c100.p61 .bar:after,
+.c100.p61 .fill,
+.c100.p62 .bar:after,
+.c100.p62 .fill,
+.c100.p63 .bar:after,
+.c100.p63 .fill,
+.c100.p64 .bar:after,
+.c100.p64 .fill,
+.c100.p65 .bar:after,
+.c100.p65 .fill,
+.c100.p66 .bar:after,
+.c100.p66 .fill,
+.c100.p67 .bar:after,
+.c100.p67 .fill,
+.c100.p68 .bar:after,
+.c100.p68 .fill,
+.c100.p69 .bar:after,
+.c100.p69 .fill,
+.c100.p70 .bar:after,
+.c100.p70 .fill,
+.c100.p71 .bar:after,
+.c100.p71 .fill,
+.c100.p72 .bar:after,
+.c100.p72 .fill,
+.c100.p73 .bar:after,
+.c100.p73 .fill,
+.c100.p74 .bar:after,
+.c100.p74 .fill,
+.c100.p75 .bar:after,
+.c100.p75 .fill,
+.c100.p76 .bar:after,
+.c100.p76 .fill,
+.c100.p77 .bar:after,
+.c100.p77 .fill,
+.c100.p78 .bar:after,
+.c100.p78 .fill,
+.c100.p79 .bar:after,
+.c100.p79 .fill,
+.c100.p80 .bar:after,
+.c100.p80 .fill,
+.c100.p81 .bar:after,
+.c100.p81 .fill,
+.c100.p82 .bar:after,
+.c100.p82 .fill,
+.c100.p83 .bar:after,
+.c100.p83 .fill,
+.c100.p84 .bar:after,
+.c100.p84 .fill,
+.c100.p85 .bar:after,
+.c100.p85 .fill,
+.c100.p86 .bar:after,
+.c100.p86 .fill,
+.c100.p87 .bar:after,
+.c100.p87 .fill,
+.c100.p88 .bar:after,
+.c100.p88 .fill,
+.c100.p89 .bar:after,
+.c100.p89 .fill,
+.c100.p90 .bar:after,
+.c100.p90 .fill,
+.c100.p91 .bar:after,
+.c100.p91 .fill,
+.c100.p92 .bar:after,
+.c100.p92 .fill,
+.c100.p93 .bar:after,
+.c100.p93 .fill,
+.c100.p94 .bar:after,
+.c100.p94 .fill,
+.c100.p95 .bar:after,
+.c100.p95 .fill,
+.c100.p96 .bar:after,
+.c100.p96 .fill,
+.c100.p97 .bar:after,
+.c100.p97 .fill,
+.c100.p98 .bar:after,
+.c100.p98 .fill,
+.c100.p99 .bar:after,
+.c100.p99 .fill,
+.pie-fill {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+
+.c100 {
     position: relative;
+    font-size: 126px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin: auto;
+    background-color: rgba(0, 0, 0, .4)
 }
 
-.login_container .form_item label {
-    @apply absolute text-lg;
-
-    transition: all 1s;
+.c100 .circleBorder {
+    width: 111px;
+    height: 111px;
+    background: 0 0;
+    border: 7.5px solid #3a3a3a;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    position: absolute
 }
 
-.login_container .form_item input {
-    @apply py-5 px-10 block border-2 border-blue-600 rounded-full my-6 text-xl outline-none
+.c100 *,
+.c100 :after,
+.c100 :before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.c100.center {
+    float: none;
+    margin: 0 auto
+}
+
+.c100>span {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    line-height: 2.4em;
+    font-size: .42em;
+    color: #fff;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    -o-transition-duration: .2s;
+    transition-duration: .2s;
+    -webkit-transition-timing-function: cubic-bezier(0.57, 0.03, 0, 0.4);
+    -moz-transition-timing-function: ease-out;
+    -o-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.c100:after {
+    position: absolute;
+    top: .06em;
+    left: .06em;
+    display: block;
+    content: " ";
+    border-radius: 50%;
+    background-color: transparent;
+    opacity: .6;
+    width: .88em;
+    height: .88em;
+    -webkit-transition-property: all;
+    -moz-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: .2s;
+    -moz-transition-duration: .2s;
+    -o-transition-duration: .2s;
+    transition-duration: .2s;
+    -webkit-transition-timing-function: ease-out;
+    -moz-transition-timing-function: ease-out;
+    -o-transition-timing-function: ease-out;
+    transition-timing-function: ease-out
+}
+
+.c100.p78 .bar {
+    -webkit-transform: rotate(280.8deg);
+    -moz-transform: rotate(280.8deg);
+    -ms-transform: rotate(280.8deg);
+    -o-transform: rotate(280.8deg);
+    transform: rotate(280.8deg)
 }

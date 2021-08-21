@@ -1,5 +1,9 @@
 import { all } from "@redux-saga/core/effects";
 import {
+  followGetLoginUserApi,
+  followGetRegisterUserApi,
+} from "./ClientSaga/QuanLyNguoiDungSaga/AuthUserSaga";
+import {
   followGetDetailMovieApi,
   followGetMovieListApi,
 } from "./ClientSaga/QuanLyPhimSaga";
@@ -16,5 +20,8 @@ export function* rootSaga() {
     // Quản Lý Rạp
     followGetTheaterApi(),
     followGetInfoTheaterApi(),
+    // Quản lý Người Dùng
+    followGetLoginUserApi(),
+    followGetRegisterUserApi(),
   ]);
 }

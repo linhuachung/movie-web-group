@@ -31,7 +31,7 @@ function TheaterTapPannel() {
               tab={
                 <img
                   src={company.logo}
-                  className="rounded-full h-16 w-16"
+                  className="rounded-full h-16 w-16 logoTab_company"
                   alt={""}
                 />
               }
@@ -41,12 +41,13 @@ function TheaterTapPannel() {
                 {company.lstCumRap?.map((listTheater, index) => {
                   return (
                     <TabPane
+                      className="test"
                       tab={
                         <div className="theaterTab_theaterList p-0">
                           <div className="theaterTab_theaterListItem">
                             <img
                               src={listTheater.hinhAnh}
-                              className=" h-16 w-16"
+                              className=" h-16 w-16 theaterImg_company"
                               alt={""}
                             />
                           </div>
@@ -55,8 +56,8 @@ function TheaterTapPannel() {
                               <li className="theaterTab_theaterName text-lg text-blue-600">
                                 {listTheater.tenCumRap}
                               </li>
-                              <li className="text-black">
-                                {listTheater.diaChi}
+                              <li className="text-black w-2/3">
+                                <p>{listTheater.diaChi}</p>
                               </li>
                               <li>
                                 <a
@@ -80,16 +81,16 @@ function TheaterTapPannel() {
                               <div className="theaterTab_movieListItem">
                                 <img
                                   src={film.hinhAnh}
-                                  className=" h-40 w-32"
+                                  className=" h-40 w-32 filmImg"
                                   alt={""}
                                 />
                               </div>
                               <div className="theaterTab_movieListItem ml-3">
                                 <ul>
-                                  <li className=" my-2">
+                                  <li className=" my-2 theaterTab_movieListItem_name">
                                     <a
-                                      href={`chi-tiet-phim/${film}`}
-                                      className="text-2xl text-blue-600 hover:text-red-800 "
+                                      href={`chi-tiet-phim/${film.maPhim}`}
+                                      className="text-2xl text-blue-600 hover:text-red-800 filmName"
                                     >
                                       {film.tenPhim}
                                     </a>

@@ -1,6 +1,5 @@
 import React from "react";
 import CardFilm from "./CardFilm";
-import ContentFilm from "./ContentFilm";
 
 function BannerDetailpage(props) {
   const { detailMovie } = props;
@@ -23,7 +22,6 @@ function BannerDetailpage(props) {
       >
         <div className="bannerOverlay">
           <CardFilm detailMovie={detailMovie} DateTime={DateTime} />
-          <ContentFilm detailMovie={detailMovie} DateTime={DateTime} />
         </div>
       </div>
     </div>

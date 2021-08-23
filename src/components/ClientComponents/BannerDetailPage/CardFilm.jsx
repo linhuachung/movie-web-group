@@ -22,7 +22,7 @@ function CardFilm(props) {
           </div>
           <div className="movie-info">
             <div className="info-section">
-              <label>Date &amp; Time</label>
+              <label>Ngày khởi chiếu</label>
               <span>{DateTime()}</span>
             </div>
             <div className="info-section">

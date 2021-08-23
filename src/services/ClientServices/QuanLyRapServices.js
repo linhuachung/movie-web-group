@@ -14,3 +14,19 @@ export function GetInfoTheaterServices() {
     method: "GET",
   });
 }
+
+//  Lấy thông tin lịch chiếu phim
+export function GetFilmShowTimeInfomationServices(maPhim) {
+  return axios({
+    method: "GET",
+    url: `${DOMAIN}/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+  });
+}
+
+// Lấy thông tin lịch chiếu hệ thống rạp
+export function GetFilmShowTimeInfomationTheaterServices(maHeThongRap) {
+  return axios({
+    method: "GET",
+    url: `${DOMAIN}/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP13`,
+  });
+}

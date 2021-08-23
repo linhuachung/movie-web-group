@@ -797,3 +797,61 @@ footer {
     -o-transform: rotate(280.8deg);
     transform: rotate(280.8deg)
 }
+
+/* show time */
+
+.ant-tabs-nav-wrap {
+    @apply justify-center border-b-2
+}
+
+.ant-tabs-content {
+    display: flex;
+    width: 100%;
+}
+
+.showTime_film {
+    @apply bg-black
+}
+
+.showTime_film .tab_content {
+    @apply border border-gray-300 bg-gray-300
+}
+
+.showTime_film .ant-tabs-tabpane {
+
+    @apply flex w-full justify-center
+}
+
+.showTime_film .theaterTab_movieListItem {
+    @apply grid grid-cols-4 gap-2
+}
+
+.showTime_film .theaterTab_movieListItem .showTime_choose {
+    @apply bg-gray-600 text-lg text-gray-200 rounded-md p-2;
+    transition: all 0.3s
+}
+
+.showTime_film .theaterTab_movieListItem .showTime_choose:hover {
+    @apply bg-blue-600
+}
+
+.thaterFilm_showtime .tab_content {
+    @apply w-3/4
+}
+
+.theater_filmShowTime .movieListItem {
+    @apply grid grid-rows-4 grid-cols-5 gap-4
+}
+
+.theater_filmShowTime .choose_time {
+    @apply grid grid-cols-4 gap-4
+}
+
+.theater_filmShowTime .movieListItem .showTime_choose {
+    @apply bg-gray-600 text-lg text-gray-200 rounded-md py-2 text-center w-full;
+    transition: all 0.3s
+}
+
+.theater_filmShowTime .movieListItem .showTime_choose:hover {
+    @apply bg-blue-600
+}

@@ -8,6 +8,8 @@ import {
   followGetMovieListApi,
 } from "./ClientSaga/QuanLyPhimSaga";
 import {
+  followGetFilmShowTimeinfomationApi,
+  followGetFilmShowTimeinfomationTheaterApi,
   followGetInfoTheaterApi,
   followGetTheaterApi,
 } from "./ClientSaga/QuanLyRapSaga";
@@ -20,6 +22,8 @@ export function* rootSaga() {
     // Quản Lý Rạp
     followGetTheaterApi(),
     followGetInfoTheaterApi(),
+    followGetFilmShowTimeinfomationApi(),
+    followGetFilmShowTimeinfomationTheaterApi(),
     // Quản lý Người Dùng
     followGetLoginUserApi(),
     followGetRegisterUserApi(),

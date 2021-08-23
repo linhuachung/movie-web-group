@@ -2,6 +2,7 @@ import Dasboard from "../pages/AdminPage/Dashboard/Dasboard";
 import LoginAdmin from "../pages/AdminPage/LoginAdmin/LoginAdmin";
 import Contact from "../pages/ClientPage/Contact/Contact";
 import DetailPage from "../pages/ClientPage/DetailPage/DetailPage";
+import TheaterDetail from "../pages/ClientPage/DetailPage/TheaterDetail";
 import Home from "../pages/ClientPage/Home/Home";
 import InfoMovie from "../pages/ClientPage/InfoMovie/InfoMovie";
 import Login from "../pages/ClientPage/Login/Login";
@@ -23,6 +24,11 @@ export const clientRouters = [
     path: "/chi-tiet-phim/:maPhim",
     exact: false,
     Component: DetailPage,
+  },
+  {
+    path: "/chi-tiet-rap/:maHeThongRap",
+    exact: false,
+    Component: TheaterDetail,
   },
   {
     path: "/thong-tin",

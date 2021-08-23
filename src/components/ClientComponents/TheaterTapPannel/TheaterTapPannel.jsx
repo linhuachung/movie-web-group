@@ -101,15 +101,15 @@ function TheaterTapPannel() {
                                       ?.slice(0, 8)
                                       .map((item, index) => {
                                         return (
-                                          <a
-                                            href="/"
+                                          <Link
+                                            to={`/danh-sach-phong-ve/${item.maLichChieu}`}
                                             className="choose_Time"
                                             key={index}
                                           >
                                             {moment(
                                               item.ngayChieuGioChieu
                                             ).format("hh:mm A")}
-                                          </a>
+                                          </Link>
                                         );
                                       })}
                                   </li>

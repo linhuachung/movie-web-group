@@ -1,5 +1,6 @@
 import Dasboard from "../pages/AdminPage/Dashboard/Dasboard";
 import LoginAdmin from "../pages/AdminPage/LoginAdmin/LoginAdmin";
+import Booking from "../pages/ClientPage/Booking/Booking";
 import Contact from "../pages/ClientPage/Contact/Contact";
 import DetailPage from "../pages/ClientPage/DetailPage/DetailPage";
 import TheaterDetail from "../pages/ClientPage/DetailPage/TheaterDetail";
@@ -52,6 +53,13 @@ export const clientAuthorRouters = [
     path: "/client/dang-ky",
     exact: true,
     Component: Register,
+  },
+];
+export const bookingClientRouters = [
+  {
+    path: "/danh-sach-phong-ve/:maLichChieu",
+    exact: true,
+    Component: Booking,
   },
 ];
 export const adminRouters = [

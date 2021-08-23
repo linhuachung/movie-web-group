@@ -855,3 +855,25 @@ footer {
 .theater_filmShowTime .movieListItem .showTime_choose:hover {
     @apply bg-blue-600
 }
+
+/* Booking Page */
+.header_Booking {
+    @apply static bg-black border-b border-blue-50 py-2
+}
+
+.booking_container .booking_item_title {
+    @apply flex justify-between
+}
+
+.booking_container .item_listChair {
+    @apply grid grid-cols-10 gap-4 m-auto;
+    width: 35%;
+}
+
+.booking_container .icon {
+    @apply text-4xl cursor-pointer duration-300
+}
+
+.booking_container .icon:hover {
+    @apply text-blue-400
+}

@@ -1,6 +1,7 @@
 import "./App.css";
 import {
   adminRouters,
+  bookingClientRouters,
   clientAuthorRouters,
   clientRouters,
 } from "./config/router.config";
@@ -11,6 +12,7 @@ import GuardAdmin from "./HOC/GuardAdmin";
 import TemplateAdmin from "./templates/TemplateAdmin";
 import ScrollToTop from "./utils/ScrollToTop";
 import TemplateAuthorClient from "./templates/TemplateAuthorClient";
+import TemplateBooking from "./templates/TemplateBooking";
 function App() {
   const renderRouterClientList = () => {
     return clientRouters.map((router, index) => {
@@ -43,6 +45,17 @@ function App() {
     });
   };
 
+  const renderRouterBookingMovie = () => {
+    return bookingClientRouters.map((router, index) => {
+      const { Component, path, exact } = router;
+      return (
+        <Route path={path} exact={exact} key={index}>
+          <TemplateBooking Component={Component} />
+        </Route>
+      );
+    });
+  };
+
   const renderRouterAdminList = () => {
     return adminRouters.map((router, index) => {
       const { Component, path, exact, checkLogin } = router;
@@ -69,6 +82,7 @@ function App() {
         {renderRouterClientList()}
         {renderRouterAdminList()}
         {renderRouterAuthorClientList()}
+        {renderRouterBookingMovie()}
         <Route path="">
           <div>PageNotFound</div>
         </Route>

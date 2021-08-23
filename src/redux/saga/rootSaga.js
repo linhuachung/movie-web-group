@@ -1,4 +1,5 @@
 import { all } from "@redux-saga/core/effects";
+import { followGetListChairApi } from "./ClientSaga/QuanLyDatVeSaga";
 import {
   followGetLoginUserApi,
   followGetRegisterUserApi,
@@ -16,6 +17,8 @@ import {
 
 export function* rootSaga() {
   yield all([
+    // Quản Lý Đặt Vé
+    followGetListChairApi(),
     // Quản Lý Phim
     followGetMovieListApi(),
     followGetDetailMovieApi(),

@@ -66,15 +66,15 @@ function FilmShowTimeDetail(props) {
                           ?.slice(0, 8)
                           .map((time, index) => {
                             return (
-                              <a
-                                href="/"
+                              <Link
+                                to={`/danh-sach-phong-ve/${time.maLichChieu}`}
                                 className="showTime_choose"
                                 key={index}
                               >
                                 {moment(time.ngayChieuGioChieu).format(
                                   "hh:mm A"
                                 )}
-                              </a>
+                              </Link>
                             );
                           })}
                       </div>

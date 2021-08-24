@@ -861,13 +861,26 @@ footer {
     @apply static bg-black border-b border-blue-50 py-2
 }
 
+.booking_container {
+    /* @apply pt-10 */
+    /* @apply w-5/6 m-auto */
+    @apply px-40
+}
+
 .booking_container .booking_item_title {
-    @apply flex justify-between
+    @apply w-5/6 m-auto
+}
+
+.booking_container .booking_item_title .item_info_logo {
+    @apply flex items-center
+}
+
+.booking_container .booking_item_title {
+    @apply flex justify-between items-center py-4
 }
 
 .booking_container .item_listChair {
-    @apply grid grid-cols-10 gap-4 m-auto;
-    width: 35%;
+    @apply grid grid-cols-10 gap-4 m-auto w-1/2;
 }
 
 .booking_container .icon {
@@ -876,4 +889,21 @@ footer {
 
 .booking_container .icon:hover {
     @apply text-blue-400
+}
+
+.booking_container .chair_description {
+    @apply flex justify-center mt-4 border-t-2 w-2/5 m-auto
+}
+
+.booking_container .chair_info {
+    @apply m-5
+}
+
+.booking_checkoutContainer {
+    @apply bg-white h-screen text-black;
+    width: 30%;
+}
+
+.booking_checkoutContainer .booking_checkoutContent {
+    @apply w-3/4 m-auto py-10
 }

@@ -57,7 +57,7 @@ export const clientAuthorRouters = [
 ];
 export const bookingClientRouters = [
   {
-    path: "/danh-sach-phong-ve/:maLichChieu",
+    path: "/danh-sach-phong-ve/:maHeThongRap/:maLichChieu",
     exact: true,
     Component: Booking,
   },

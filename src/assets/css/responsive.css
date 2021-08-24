@@ -6,6 +6,17 @@
     .login_container .form_content {
         @apply w-1/2
     }
+
+
+
+}
+
+@media screen and (min-width: 1280px) {
+
+    /* booking */
+    .booking_checkoutContainer {
+        height: 130vh;
+    }
 }
 
 @media screen and (max-width: 1280px) {
@@ -64,12 +75,18 @@
     .theaterTab_container .test {
         width: 30% !important;
     }
+
+
+    /* booking */
+
 }
 
 @media screen and (max-width: 1024px) {
     .login_container .form_content {
         @apply w-1/2
     }
+
+
 }
 
 @media screen and (max-width: 768px) {
@@ -200,6 +217,46 @@
     .login_container .form_content {
         @apply w-1/2
     }
+
+    /* booking */
+    .booking_container {
+        @apply w-2/3 px-2 mx-4
+    }
+
+    .booking_container .item_info p {
+        @apply text-xs
+    }
+
+    .booking_container .booking_logo img {
+        @apply w-12
+    }
+
+    .booking_container .time_code {
+        @apply text-2xl
+    }
+
+    .booking_container .item_listChair {
+        @apply w-3/4
+    }
+
+
+
+    .booking_container .item_listChair .icon {
+        @apply text-xl
+    }
+
+    .booking_container .chair_description {
+        @apply w-full
+    }
+
+    .booking_container .chair_info {
+        @apply w-full
+    }
+
+    .booking_checkoutContainer {
+        height: 124vh;
+    }
+
 }
 
 @media screen and (max-width: 640px) {

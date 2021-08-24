@@ -102,7 +102,7 @@ function TheaterTapPannel() {
                                       .map((item, index) => {
                                         return (
                                           <Link
-                                            to={`/danh-sach-phong-ve/${item.maLichChieu}`}
+                                            to={`/danh-sach-phong-ve/${company.maHeThongRap}/${item.maLichChieu}`}
                                             className="choose_Time"
                                             key={index}
                                           >

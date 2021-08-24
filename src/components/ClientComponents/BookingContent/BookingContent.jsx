@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 
 function BookingContent(props) {
-  const { listChair } = props;
+  const { listChair, theater } = props;
 
-  console.log(listChair);
-  console.log(listChair.thongTinPhim?.ngayChieu);
+  // console.log(listChair);
+  // console.log(listChair.thongTinPhim?.ngayChieu);
 
   const [minutes, setMinutes] = useState(5);
   const [seconds, setSeconds] = useState(60);
@@ -46,18 +46,39 @@ function BookingContent(props) {
     <div className="booking_container">
       <div className="booking_content">
         <div className="booking_item_title">
-          <div className="item_info">
-            <p>{listChair.thongTinPhim?.tenCumRap}</p>
-            <p>
-              Ngày Chiếu: {listChair.thongTinPhim?.ngayChieu} - Tên Rạp:{" "}
-              {listChair.thongTinPhim?.tenRap}
-            </p>
-          </div>
-          <div className="item_info">
-            <div>
-              <p>Thời gian giữ chỗ</p>
+          <div className="item_info_logo">
+            <div className="booking_logo">
+              {theater.map((item, index) => {
+                return (
+                  <img
+                    src={item.logo}
+                    alt={`${item.tenHeThongRap}`}
+                    className="w-16"
+                    key={index}
+                  />
+                );
+              })}
             </div>
+            <div className="item_info ml-4">
+              <p className="m-0 text-green-300 text-2xl">
+                {listChair.thongTinPhim?.tenCumRap}
+              </p>
+              <p className="m-0 text-base text-gray-300">
+                <span className="text-blue-300">Ngày Chiếu:</span>{" "}
+                {listChair.thongTinPhim?.ngayChieu} -{" "}
+                <span className="text-blue-300">Tên Rạp:</span>{" "}
+                {listChair.thongTinPhim?.tenRap}
+              </p>
+            </div>
+          </div>
+
+          <div className="item_info">
             <div>
+              <p className="m-0 text-base text-gray-300 time_down">
+                Thời gian giữ chỗ
+              </p>
+            </div>
+            <div className="text-center text-4xl text-red-400 time_code">
               {minutes}:{seconds}
             </div>
           </div>
@@ -90,6 +111,35 @@ function BookingContent(props) {
                 </div>
               );
             })}
+          </div>
+          <div className="chair_description">
+            <div className="chair_info text-center">
+              <div className="chair_info_item">
+                <FontAwesomeIcon
+                  icon={faCouch}
+                  className="text-green-500 text-lg"
+                />
+              </div>
+              <p>Ghế Đang Chọn</p>
+            </div>
+            <div className="chair_info text-center">
+              <div className="chair_info_item">
+                <FontAwesomeIcon
+                  icon={faCouch}
+                  className="text-gray-700 text-lg"
+                />
+              </div>
+              <p>Ghế Đã Có Người Chọn</p>
+            </div>
+            <div className="chair_info text-center">
+              <div className="chair_info_item">
+                <FontAwesomeIcon
+                  icon={faCouch}
+                  className="text-yellow-600 text-lg"
+                />
+              </div>
+              <p>Ghế Vip</p>
+            </div>
           </div>
         </div>
       </div>

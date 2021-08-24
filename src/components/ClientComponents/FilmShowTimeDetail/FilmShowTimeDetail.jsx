@@ -67,7 +67,7 @@ function FilmShowTimeDetail(props) {
                           .map((time, index) => {
                             return (
                               <Link
-                                to={`/danh-sach-phong-ve/${time.maLichChieu}`}
+                                to={`/danh-sach-phong-ve/${company.maHeThongRap}/${time.maLichChieu}`}
                                 className="showTime_choose"
                                 key={index}
                               >

@@ -31,19 +31,21 @@ function* getBookingApi(action) {
   try {
     const user = JSON.parse(localStorage.getItem("user"));
     const res = yield call(() => BookingServices(action.data));
-    if (user === null) {
+    console.log(res);
+    console.log(user);
+    // if (user.taiKhoan === null) {
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: `Vui lòng đăng nhập để tiếp tục đặt vé`,
+    //   });
+    // } else {
+    if (res.status === 200) {
       Swal.fire({
-        icon: "error",
-        title: `Vui lòng đăng nhập để tiếp tục đặt vé`,
+        icon: "success",
+        title: "Đặt vé thành công",
       });
-    } else {
-      if (res.status === 200) {
-        Swal.fire({
-          icon: "success",
-          title: "Đặt vé thành công",
-        });
-      }
     }
+    // }
   } catch (e) {
     console.log(e);
     Swal.fire({

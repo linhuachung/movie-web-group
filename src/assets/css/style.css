@@ -900,10 +900,67 @@ footer {
 }
 
 .booking_checkoutContainer {
-    @apply bg-white h-screen text-black;
+    @apply bg-gray-400 text-black;
     width: 30%;
+    box-shadow: -3px 0px 3px 3px #6868688a;
 }
 
 .booking_checkoutContainer .booking_checkoutContent {
-    @apply w-3/4 m-auto py-10
+    @apply pt-10 h-full flex flex-col justify-between
+}
+
+.booking_checkoutContainer .booking_itemTop,
+.item_warning {
+    @apply w-3/4 m-auto my-0
+}
+
+.booking_checkoutContainer .booking_itemTop_item1 .film_itemName {
+    @apply text-3xl my-1 text-blue-900 font-bold
+}
+
+.booking_checkoutContainer .booking_itemTop_item1 .pcinema_binding,
+.hour_binding {
+    @apply text-base text-blue-700 font-bold
+}
+
+.booking_checkoutContainer .booking_itemTop_item2 {
+    @apply flex justify-between
+}
+
+.booking_checkoutContainer .booking_itemTop_item2 .item_chair,
+._item_chairValue {
+    @apply text-base text-red-700
+}
+
+.booking_checkoutContainer .booking_itemTop_item3 .item3_input {
+    @apply my-2
+}
+
+.booking_checkoutContainer .booking_itemTop_item3 input {
+    @apply rounded-none bg-transparent border-b px-0 pt-0 text-lg
+}
+
+.booking_checkoutContainer .booking_itemTop_item3 input:focus {
+    @apply outline-none
+}
+
+.booking_checkoutContainer .booking_itemTop_item3 input:hover .item3_label {
+    @apply bg-black
+}
+
+
+.booking_checkoutContainer .booking_itemBottom .item_warning {
+    @apply text-center text-lg text-red-800 font-bold
+}
+
+.booking_checkoutContainer .btn_booking {
+    @apply w-full text-center bg-blue-900 text-2xl font-bold text-gray-400 py-6 duration-150
+}
+
+.booking_checkoutContainer .btn_booking:hover {
+    @apply bg-gray-500 text-blue-600
+}
+
+.booking_checkoutContainer .booking_noneActive {
+    @apply w-full text-center bg-gray-600 text-2xl text-black py-6 m-0 cursor-not-allowed
 }

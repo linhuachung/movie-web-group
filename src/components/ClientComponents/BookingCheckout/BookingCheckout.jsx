@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { BOOKING_SAGA_TYPE } from "../../../redux/types/QuanLyDatVeType/QuanLyDatVeType";
 
 function BookingCheckout(props) {
-  const { listChair } = props;
-  console.log(listChair);
+  const { listChair, chairChoose } = props;
+  const { chair } = props;
+  console.log("chairChoose ", chairChoose);
+
+  const dispatch = useDispatch();
+  const handleBooking = () => {
+    dispatch({
+      type: BOOKING_SAGA_TYPE,
+      data: chairChoose,
+    });
+  };
+
   return (
     <div className="booking_checkoutContainer">
       <div className="booking_checkoutContent">
@@ -24,15 +36,19 @@ function BookingCheckout(props) {
           </div>
           <div className="booking_itemTop_item2">
             <div className="item_chair">
-              <pan>Ghế</pan>
+              <span>Ghế</span>
             </div>
             <div className="_item_chairValue">
-              <pan>0</pan>
+              <span>
+                {/* {chairChoose.danhSachVe.map((item, index) => {
+                  return <span key={index}>{item.maGhe}</span>;
+                })} */}
+              </span>
             </div>
           </div>
           <div className="booking_itemTop_item3">
-            <div className="space-y-1 text-sm">
-              <label htmlFor="email" className="block dark:text-coolGray-400">
+            <div className="text-sm item3_input">
+              <label htmlFor="email" className=" item3_label">
                 Email
               </label>
               <input
@@ -42,8 +58,8 @@ function BookingCheckout(props) {
                 className="w-full px-4 py-3 rounded-md dark:border-coolGray-700 dark:bg-coolGray-900 dark:text-coolGray-100"
               />
             </div>
-            <div className="space-y-1 text-sm">
-              <label htmlFor="number" className="block dark:text-coolGray-400">
+            <div className="text-sm item3_input">
+              <label htmlFor="number" className=" item3_label">
                 Số điện thoại
               </label>
               <input
@@ -65,8 +81,16 @@ function BookingCheckout(props) {
             </p>
           </div>
           <div className="item_booking">
-            <button className="btn_booking">Đặt Vé</button>
+            <button
+              className="btn_booking booking_active"
+              onClick={handleBooking}
+            >
+              Đặt Vé
+            </button>
           </div>
+          {/* <div className="item_booking">
+            <p className=" booking_noneActive">Đặt Vé</p>
+          </div> */}
         </div>
       </div>
     </div>

@@ -4,14 +4,14 @@ import { BOOKING_SAGA_TYPE } from "../../../redux/types/QuanLyDatVeType/QuanLyDa
 
 function BookingCheckout(props) {
   const { listChair, chairChoose } = props;
-  const { chair } = props;
+  const { chair, arr } = props;
   console.log("chairChoose ", chairChoose);
 
   const dispatch = useDispatch();
   const handleBooking = () => {
     dispatch({
       type: BOOKING_SAGA_TYPE,
-      data: chairChoose,
+      data: arr,
     });
   };
 

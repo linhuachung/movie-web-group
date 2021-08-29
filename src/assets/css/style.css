@@ -51,7 +51,7 @@ img {
 }
 
 .nav_left nav ul {
-    @apply flex justify-around
+    @apply flex justify-around m-0
 }
 
 nav ul li {
@@ -963,4 +963,145 @@ footer {
 
 .booking_checkoutContainer .booking_noneActive {
     @apply w-full text-center bg-gray-600 text-2xl text-black py-6 m-0 cursor-not-allowed
+}
+
+
+/* profile */
+.profile_Container .profile_content {
+    @apply grid grid-cols-4 col-auto w-4/6 h-screen m-auto pt-28;
+}
+
+.profile_Container .profile_content .profile_avatar {
+    @apply flex flex-col items-center border-b border-gray-600 p-8
+}
+
+.profile_Container .profile_content .profile_contentTabPanel {
+    @apply col-span-1 bg-gray-700
+}
+
+.profile_Container .profile_content .profile_contentTabPanel .profile_contentTabPanel_itemTab {
+    @apply flex flex-col justify-between h-full;
+
+}
+
+.profile_Container .profile_content .profile_contentTabPanel .profile_contentTabPanel_itemTab ul {
+    @apply m-0 py-0
+}
+
+.profile_Container .profile_content .profile_contentTabPanel .profile_contentTabPanel_itemTab .item_tap {
+    @apply block px-4 py-3 text-lg text-blue-500 duration-300 !important;
+
+}
+
+.profile_Container .profile_content .profile_contentTabPanel .profile_contentTabPanel_itemTab .item_tap:hover {
+    @apply bg-gray-600 text-blue-300 !important;
+
+}
+
+.profile_Container .profile_content .profile_contentTab {
+    @apply col-span-3 bg-gray-300
+}
+
+.profile_Container .profile_content .profile_contentTab .form_container {
+    @apply flex items-center
+}
+
+.profile_Container .profile_content .profile_contentTab .form_container .formTab_content {
+    @apply w-3/5 m-auto
+}
+
+.profile_Container .profile_content .profile_contentTab .form_container .formTab_content .form_item {
+    @apply text-lg flex justify-between items-center
+}
+
+.profile_Container .profile_content .profile_contentTab .form_container .formTab_content .form_item input {
+    @apply w-2/5 px-2 py-3 my-2 rounded-md bg-transparent text-blue-700 text-lg font-bold
+}
+
+
+
+
+
+
+
+
+/* login admin */
+.loginAdmin_background {
+    background-image: url(../image/VN-vi-20210823-popsignuptwoweeks-perspective_alpha_website_small.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    @apply h-screen relative
+}
+
+.loginAdmin_container {
+    @apply w-full h-full;
+    background-color: #000000d9
+}
+
+.loginAdmin_container .loginAdmin_content {
+    @apply absolute top-1/2 left-1/2 w-1/4 h-3/5 p-4 rounded-xl text-white pt-20;
+    transform: translate(-50%, -50%);
+    background-color: #0000007a;
+}
+
+.loginAdmin_container .loginAdmin_content .formAdmin_title {
+    @apply text-4xl text-center
+}
+
+.loginAdmin_container .formAdmin_container {
+    @apply text-center my-8
+}
+
+.loginAdmin_container .loginAdmin_contentForm {
+    @apply m-0 !important
+}
+
+.loginAdmin_container .formLogin_admin {
+    @apply w-3/4 m-auto
+}
+
+.loginAdmin_container label {
+    @apply text-base
+}
+
+.loginAdmin_container input {
+    @apply py-3 text-lg duration-300 outline-none text-black
+}
+
+.loginAdmin_container input:active {
+    @apply bg-blue-200
+}
+
+.loginAdmin_container input:focus {
+    @apply bg-blue-200 outline-none
+}
+
+.loginAdmin_container .formAdmin_itemSubmit:hover {
+    @apply bg-blue-900 text-white
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* admin dasboard */
+/* header */
+.header_admin .nav_item_adminDashboard {
+    @apply text-lg text-gray-500 duration-300
+}
+
+
+.header_admin .nav_item_adminDashboard:hover {
+    @apply text-blue-500 border-b-4 border-blue-500 py-3
+}
+
+.active_nav_dashboard {
+    @apply text-blue-500 border-b-4 border-blue-500 py-3 !important
 }

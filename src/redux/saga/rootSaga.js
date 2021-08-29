@@ -1,10 +1,13 @@
 import { all } from "@redux-saga/core/effects";
+import { followGetAdminUserList } from "./AdminSaga/AdminQuanLyNguoiDungSaga";
+import { followGetLoginAdminApi } from "./AdminSaga/AuthAdminSaga";
 import {
   followGetBookingApi,
   followGetListChairApi,
 } from "./ClientSaga/QuanLyDatVeSaga";
 import {
   followGetLoginUserApi,
+  followGetProfileUserApi,
   followGetRegisterUserApi,
 } from "./ClientSaga/QuanLyNguoiDungSaga/AuthUserSaga";
 import {
@@ -34,5 +37,11 @@ export function* rootSaga() {
     // Quản lý Người Dùng
     followGetLoginUserApi(),
     followGetRegisterUserApi(),
+    followGetProfileUserApi(),
+
+    // Admin
+    // Quản Lý Người Dùng
+    followGetLoginAdminApi(),
+    followGetAdminUserList(),
   ]);
 }

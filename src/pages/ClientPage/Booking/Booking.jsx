@@ -29,7 +29,7 @@ function Booking(props) {
   let danhSachVe = [];
   let arr = {
     maLichChieu: maLichChieu,
-    danhSachVe: "",
+    danhSachVe: danhSachVe,
   };
 
   const chair = (chair) => {
@@ -37,33 +37,38 @@ function Booking(props) {
       const data = danhSachVe.some((item) => item.maGhe === chair.maGhe);
       if (!data) {
         danhSachVe.push({ maGhe: chair.maGhe, giaVe: chair.giaVe });
-
         // console.log(danhSachVe);
       } else {
         danhSachVe = danhSachVe.filter((item) => item.maGhe !== chair.maGhe);
         // console.log(danhSachVe);
       }
       arr = { ...arr, danhSachVe: danhSachVe };
-      ////
       listChair.danhSachGhe.forEach((choice) => {
         if (choice.maGhe === chair.maGhe) {
           choice.dangChon = !choice.dangChon;
         }
       });
-      console.log(listChair);
+      console.log(danhSachVe);
     }
-    // console.log(arr);
+    return arr;
   };
+
   const [chairChoose, setChairChoose] = useState(arr);
 
   return (
     <div className="bg-black text-white">
       <div className="flex booking_container_flex">
-        <BookingContent listChair={listChair} theater={theater} chair={chair} />
+        <BookingContent
+          listChair={listChair}
+          theater={theater}
+          chair={chair}
+          setChairChoose={setChairChoose}
+        />
         <BookingCheckout
           listChair={listChair}
           chair={chair}
           chairChoose={chairChoose}
+          arr={arr}
         />
       </div>
     </div>

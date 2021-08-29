@@ -53,7 +53,7 @@ function Footer() {
                   <img
                     src="/image/android-app-download-button.png"
                     alt={""}
-                    className="w-48 mr-4"
+                    className="w-48"
                   />
                 </a>
                 <a href="https://www.apple.com/app-store/">

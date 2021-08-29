@@ -25,24 +25,6 @@ function HeaderBooking() {
     };
   }, []);
 
-  // Show navbar
-  const [show, setShow] = useState(false);
-  const controlNavbar = () => {
-    if (window.scrollY > 200) {
-      setShow(true);
-    } else {
-      setShow(false);
-    }
-  };
-  useEffect(() => {
-    // Hiện nav khi scroll xuống
-    window.addEventListener("scroll", controlNavbar);
-    // Xóa nav khi scroll lên cùng
-    return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
-  }, []);
-
   const user = JSON.parse(localStorage.getItem("user"));
 
   return (

@@ -1,10 +1,13 @@
-import { call, takeLatest } from "redux-saga/effects";
+import { call,  put, takeLatest } from "redux-saga/effects";
 import {
   LoginUserServices,
+  ProfileUserServices,
   RegisterUserServices,
 } from "../../../../services/ClientServices/QuanLyNguoiDungServices/AuthUser";
 import Swal from "sweetalert2";
 import {
+  GET_PROFILE_USER_SAGA_TYPE,
+  GET_PROFILE_USER_TYPE,
   LOGIN_USER_SAGA_TYPE,
   REGISTER_USER_SAGA_TYPE,
 } from "../../../types/QuanLyNguoiDungType/AuthUser";
@@ -65,4 +68,25 @@ function* getRegisterUserApi(action) {
 
 export function* followGetRegisterUserApi() {
   return yield takeLatest(REGISTER_USER_SAGA_TYPE, getRegisterUserApi);
+}
+
+// Lấy thông tin tài khoản người dùng
+
+function* getProfileUserApi() {
+  try {
+    const res = yield call(() => ProfileUserServices());
+    yield put({
+      type: GET_PROFILE_USER_TYPE,
+      data: res.data,
+    });
+  } catch (e) {
+    Swal.fire({
+      icon: "error",
+      title: `${e.response.data.content}`,
+    });
+  }
+}
+
+export function* followGetProfileUserApi() {
+  return yield takeLatest(GET_PROFILE_USER_SAGA_TYPE, getProfileUserApi);
 }

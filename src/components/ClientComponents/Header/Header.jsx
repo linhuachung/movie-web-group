@@ -102,8 +102,15 @@ function Header() {
             >
               Đăng nhập
             </Link>
-          ) : (
+          ) : user.maLoaiNguoiDung === "khachHang" ? (
             <IconAfterLogin />
+          ) : (
+            <Link
+              to="/client/dang-nhap"
+              className="nav_Button hover:text-white duration-500"
+            >
+              Đăng nhập
+            </Link>
           )}
         </div>
       </div>

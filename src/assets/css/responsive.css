@@ -11,12 +11,28 @@
 
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-device-width: 1281px) and (max-device-width: 1600px) {
 
-    /* booking */
-    /* .booking_checkoutContainer {
-        height: 130vh;
-    } */
+    /* heaer  */
+    .nav_container {
+        @apply p-0
+    }
+
+    .nav_container .nav_left .nav_logo {
+        @apply w-20
+    }
+
+    .nav_container .nav_left .nav_item {
+        @apply text-lg
+    }
+
+
+
+    /* login Admin */
+    .loginAdmin_container .loginAdmin_content {
+        @apply pt-10
+    }
+
 }
 
 @media screen and (max-width: 1280px) {
@@ -78,6 +94,83 @@
 
 
     /* booking */
+    .booking_container_flex {
+        /* @apply flex-col */
+    }
+
+    .booking_container {
+        @apply px-0 w-3/4
+    }
+
+    .booking_container .booking_content {
+        @apply w-5/6 m-auto
+    }
+
+    .booking_container .booking_logo img {
+        @apply w-10
+    }
+
+    .booking_container .booking_item_title {
+        @apply p-0 pt-5 w-full
+    }
+
+    .booking_container .item_info .item_info_theater {
+        @apply text-lg
+    }
+
+    .booking_container .item_info .item_info_filmShowtime {
+        @apply text-sm
+    }
+
+    .booking_container .item_info .time_code {
+        @apply text-xl
+    }
+
+    .booking_container .item_listChair {
+        @apply gap-2.5 w-3/4
+    }
+
+    .booking_container .item_listChair .icon {
+        @apply text-3xl
+    }
+
+    .booking_container .item_listChair .icon_disable {
+        @apply text-3xl
+    }
+
+    .booking_container .chair_description {
+        @apply w-5/6 justify-between
+    }
+
+    .booking_container .chair_info {
+        @apply m-0 mt-4
+    }
+
+    .booking_container .icon_disable {
+        @apply text-2xl
+    }
+
+    .booking_checkoutContainer {
+        @apply w-2/5
+    }
+
+
+    .booking_checkoutContainer .contentcinema .pcinema_binding,
+    .hour_binding {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemTop_item3 input {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .item_warning {
+        @apply text-base
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .btn_booking {
+        @apply text-xl py-3
+    }
 
 }
 
@@ -134,7 +227,65 @@
     .booking_container .chair_info {
         @apply m-0 mt-4
     }
+
+    .booking_container .icon_disable {
+        @apply text-2xl
+    }
+
+    .booking_checkoutContainer {
+        @apply w-2/5
+    }
+
+
+    .booking_checkoutContainer .contentcinema .pcinema_binding,
+    .hour_binding {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemTop_item3 input {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .item_warning {
+        @apply text-base
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .btn_booking {
+        @apply text-xl py-3
+    }
+
+    /* footer */
+    .footer_container .footer_content {
+        @apply p-0
+    }
+
+    .footer_container .footer_content .footerContent_left {
+        @apply text-sm
+    }
+
+    .footer_container .footer_content .logo_company {
+        @apply gap-0
+    }
+
+    .footer_container .footer_content .logo_company .logoCompany_item {
+        @apply w-5
+    }
+
+    .footer_container .footer_content .logo_company img {
+        @apply w-full
+    }
+
+    .footer_container .footer_content .footerContent_right .footer_appLogo {
+        @apply justify-between
+    }
+
+    .footer_container .footer_content .footerContent_right .footer_appLogo img {
+        @apply w-32
+    }
+
 }
+
+
 
 @media screen and (max-width: 768px) {
 
@@ -258,6 +409,9 @@
         @apply w-4/5;
     }
 
+    .footer_container .footer_content .footer_appLogo {
+        justify-content: center !important;
+    }
 
 
     /* form login */
@@ -270,16 +424,32 @@
         @apply w-2/3 px-2 mx-4
     }
 
+    .booking_container .booking_content {
+        @apply w-full
+    }
+
     .booking_container .item_info p {
         @apply text-xs
     }
 
+    .booking_container .booking_content .item_info_theater {
+        @apply text-sm
+    }
+
+    .booking_container .booking_content .item_info_filmShowtime p {
+        @apply text-xs
+    }
+
+    .booking_container .booking_content .item_info_filmShowtime span {
+        @apply text-xs
+    }
+
     .booking_container .booking_logo img {
-        @apply w-12
+        @apply w-10
     }
 
     .booking_container .time_code {
-        @apply text-2xl
+        @apply text-xl
     }
 
     .booking_container .item_listChair {
@@ -300,9 +470,21 @@
         @apply w-full
     }
 
-    /* .booking_checkoutContainer {
-        height: 124vh;
-    } */
+    .booking_container .icon_disable {
+        @apply text-xl
+    }
+
+    .booking_checkoutContainer .booking_checkoutContent .booking_itemTop .pcinema_binding {
+        @apply text-xs
+    }
+
+    .booking_checkoutContainer .booking_checkoutContent .booking_itemTop .hour_binding {
+        @apply text-xs
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .item_warning {
+        @apply text-xs
+    }
 
 }
 
@@ -434,6 +616,186 @@
     .login_container .form_content {
         @apply w-3/4
     }
+
+
+
+    /* booking */
+    .booking_container_flex {
+        @apply flex-col
+    }
+
+    .booking_container {
+        @apply px-0 w-full m-auto
+    }
+
+    .booking_container .booking_content {
+        @apply w-5/6 m-auto
+    }
+
+    .booking_container .booking_logo img {
+        @apply w-10
+    }
+
+    .booking_container .booking_item_title {
+        @apply p-0 pt-5 w-full
+    }
+
+    .booking_container .item_info .item_info_theater {
+        @apply text-lg
+    }
+
+    .booking_container .item_info .item_info_filmShowtime {
+        @apply text-sm
+    }
+
+    .booking_container .item_info .time_code {
+        @apply text-xl
+    }
+
+    .booking_container .item_listChair {
+        @apply gap-2.5 w-3/4
+    }
+
+    .booking_container .item_listChair .icon {
+        @apply text-3xl
+    }
+
+    .booking_container .item_listChair .icon_disable {
+        @apply text-3xl
+    }
+
+    .booking_container .chair_description {
+        @apply w-5/6 justify-between
+    }
+
+    .booking_container .chair_info {
+        @apply m-0 mt-4
+    }
+
+    .booking_container .icon_disable {
+        @apply text-2xl
+    }
+
+    .booking_checkoutContainer {
+        @apply w-full
+    }
+
+
+    .booking_checkoutContainer .contentcinema .pcinema_binding,
+    .hour_binding {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemTop_item3 input {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .item_warning {
+        @apply text-base
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .btn_booking {
+        @apply text-xl py-3
+    }
+
+
+
+
+}
+
+
+
+@media screen and (max-width: 415px) {
+
+
+
+    /* booking */
+    .booking_container_flex {
+        @apply flex-col
+    }
+
+    .booking_container {
+        @apply px-0 w-full m-auto
+    }
+
+    .booking_container .booking_content {
+        @apply m-auto;
+        width: 90%;
+    }
+
+    .booking_container .booking_logo img {
+        @apply w-10
+    }
+
+    .booking_container .booking_item_title {
+        @apply p-0 pt-5 w-full
+    }
+
+    .booking_container .item_info .item_info_theater {
+        @apply text-xs
+    }
+
+    .booking_container .item_info .item_info_filmShowtime {
+        @apply text-xs
+    }
+
+    .booking_container .item_info .time_down {
+        @apply text-xs
+    }
+
+    .booking_container .item_info .time_code {
+        @apply text-xs
+    }
+
+    .booking_container .item_listChair {
+        @apply gap-2.5 w-3/4
+    }
+
+    .booking_container .item_listChair .icon {
+        @apply text-lg
+    }
+
+    .booking_container .item_listChair .icon_disable {
+        @apply text-lg
+    }
+
+    .booking_container .chair_description {
+        @apply w-5/6 justify-between
+    }
+
+    .booking_container .chair_info {
+        @apply m-0 mt-4
+    }
+
+    .booking_container .icon_disable {
+        @apply text-2xl
+    }
+
+    .booking_checkoutContainer {
+        @apply w-full
+    }
+
+
+    .booking_checkoutContainer .contentcinema .pcinema_binding,
+    .hour_binding {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemTop_item3 input {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .item_warning {
+        @apply text-base
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .btn_booking {
+        @apply text-xl py-3
+    }
+
+
+
+
 }
 
 

@@ -12,7 +12,7 @@ function Register() {
     matKhau: "",
     email: "",
     soDt: "",
-    maNhom: "GP00",
+    maNhom: "GP11",
     hoTen: "",
   });
 

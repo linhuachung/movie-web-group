@@ -10,40 +10,10 @@ function BookingContent(props) {
   const [minutes] = useState(5);
   const [seconds] = useState(60);
 
-  const arr = [];
   const handleChoiceChair = (value) => {
     chair({ maGhe: value.maGhe, giaVe: value.giaVe });
-
-    // setChoose((choose) => !choose);
+    setChoose((choose) => !choose);
     // setChairChoose(chair({ maGhe: value.maGhe, giaVe: value.giaVe }));
-  };
-
-  const choice = () => {
-    return listChair.danhSachGhe?.slice(0, 130).map((chair, index) => {
-      return (
-        <div key={index}>
-          {chair.taiKhoanNguoiDat === null ? (
-            <FontAwesomeIcon
-              onClick={() => handleChoiceChair(chair)}
-              icon={faCouch}
-              className={
-                chair.dangChon === true
-                  ? " text-green-800  icon "
-                  : chair.loaiGhe === "Thuong"
-                  ? " text-gray-300  icon "
-                  : "text-yellow-600 icon"
-              }
-            />
-          ) : (
-            <FontAwesomeIcon
-              icon={faCouch}
-              key={index}
-              className="text-gray-700 text-4xl cursor-not-allowed hover:none "
-            />
-          )}
-        </div>
-      );
-    });
   };
 
   return (
@@ -91,7 +61,39 @@ function BookingContent(props) {
           <div className="item_img">
             <img src="/image/TheaterView.png" alt={"manHinh"} />
           </div>
-          <div className="item_listChair">{choice()}</div>
+          <div className="item_listChair">
+            {listChair.danhSachGhe?.slice(0, 130).map((chair, index) => {
+              return (
+                <div key={index}>
+                  {chair.taiKhoanNguoiDat === null ? (
+                    <FontAwesomeIcon
+                      onClick={() => handleChoiceChair(chair)}
+                      icon={faCouch}
+                      className={
+                        choose
+                          ? chair.dangChon === true
+                            ? " text-green-400  icon "
+                            : chair.loaiGhe === "Thuong"
+                            ? " text-gray-300  icon "
+                            : "text-yellow-600 icon"
+                          : chair.dangChon === true
+                          ? " text-green-400  icon "
+                          : chair.loaiGhe === "Thuong"
+                          ? " text-gray-300  icon "
+                          : "text-yellow-600 icon"
+                      }
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faCouch}
+                      key={index}
+                      className="text-gray-700 text-4xl cursor-not-allowed hover:none icon_disable"
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
           <div className="chair_description">
             <div className="chair_info text-center">
               <div className="chair_info_item">

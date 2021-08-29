@@ -1,6 +1,7 @@
 import "./App.css";
 import {
   adminRouters,
+  adminRoutersLogin,
   bookingClientRouters,
   clientAuthorRouters,
   clientRouters,
@@ -13,6 +14,7 @@ import TemplateAdmin from "./templates/TemplateAdmin";
 import ScrollToTop from "./utils/ScrollToTop";
 import TemplateAuthorClient from "./templates/TemplateAuthorClient";
 import TemplateBooking from "./templates/TemplateBooking";
+import TemplateAuthorAdmin from "./templates/TemplateAuthorAdmin";
 function App() {
   const renderRouterClientList = () => {
     return clientRouters.map((router, index) => {
@@ -75,6 +77,27 @@ function App() {
       );
     });
   };
+
+  const renderRouterAdminLogin = () => {
+    return adminRoutersLogin.map((router, index) => {
+      const { Component, path, exact, checkLogin } = router;
+      if (checkLogin) {
+        return (
+          <Route path={path} exact={exact} key={index}>
+            <GuardAdmin>
+              <TemplateAuthorAdmin Component={Component} />
+            </GuardAdmin>
+          </Route>
+        );
+      }
+      return (
+        <Route path={path} exact={exact} key={index}>
+          <TemplateAuthorAdmin Component={Component} />
+        </Route>
+      );
+    });
+  };
+
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -83,6 +106,7 @@ function App() {
         {renderRouterAdminList()}
         {renderRouterAuthorClientList()}
         {renderRouterBookingMovie()}
+        {renderRouterAdminLogin()}
         <Route path="">
           <div>PageNotFound</div>
         </Route>

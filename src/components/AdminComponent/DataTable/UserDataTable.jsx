@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Table, Space, Input, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import Modal from "antd/lib/modal/Modal";
+import FormDataAddUser from "../FormData/FormDataAddUser";
+import { useDispatch } from "react-redux";
+import { ADD_USER_ADMIN_SAGA_TYPE } from "../../../redux/types/QuanLyNguoiDungType/AuthUser";
 
 function UserDataTable(props) {
   const { user } = props;
 
   const [, setSearchText] = useState();
   const [, setSearchedColumn] = useState();
+  const [showFormAddUser, setShowFormAddUser] = useState(false);
   let searchInput;
 
   const getColumnSearchProps = (dataIndex) => ({
@@ -188,14 +193,25 @@ function UserDataTable(props) {
       ),
     };
   });
-
+  let userObj;
+  const dispatch = useDispatch();
+  const handleGetUser = (userData) => {
+    console.log(userData);
+    userObj = userData;
+    return userObj;
+  };
+  const handleAddUser = () => {
+    dispatch({
+      type: ADD_USER_ADMIN_SAGA_TYPE,
+      user: userObj,
+    });
+    setTimeout(() => setShowFormAddUser((open) => !open), 1000);
+  };
   return (
     <div className="my-5">
       <Space style={{ marginBottom: 10 }}>
         <button
-          onClick={() => {
-            console.log(1);
-          }}
+          onClick={() => setShowFormAddUser((open) => !open)}
           className=" bg-blue-600 px-5 py-1 text-lg rounded-md text-gray-100 duration-300 hover:bg-blue-400 hover:text-blue-600 "
         >
           Thêm Người Dùng
@@ -207,6 +223,18 @@ function UserDataTable(props) {
         pagination={{ pageSize: 12 }}
         scroll={{ x: 1500 }}
       />
+      {showFormAddUser ? (
+        <Modal
+          title="Modal 1000px width"
+          centered
+          visible={showFormAddUser}
+          onOk={handleAddUser}
+          onCancel={() => setShowFormAddUser((open) => !open)}
+          width={1000}
+        >
+          <FormDataAddUser handleGetUser={handleGetUser} />
+        </Modal>
+      ) : null}
     </div>
   );
 }

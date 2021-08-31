@@ -22,7 +22,6 @@ function Register() {
       ...user,
       [name]: value,
     });
-    console.log(user);
   };
 
   const handleSubmit = (e) => {

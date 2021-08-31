@@ -7,3 +7,16 @@ export function AdminGetUserListServices() {
     method: "GET",
   });
 }
+
+// Thêm Người Dùng
+export function AdminAddUserServices(user) {
+  const userToken = JSON.parse(localStorage.getItem("user"));
+  return axios({
+    url: `${DOMAIN}/api/QuanLyNguoiDung/ThemNguoiDung`,
+    method: "POST",
+    data: user,
+    headers: {
+      Authorization: `Bearer ${userToken.accessToken}`,
+    },
+  });
+}

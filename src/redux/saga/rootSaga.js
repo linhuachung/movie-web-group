@@ -1,5 +1,8 @@
 import { all } from "@redux-saga/core/effects";
-import { followGetAdminUserList } from "./AdminSaga/AdminQuanLyNguoiDungSaga";
+import {
+  followGetAddYserAdminApi,
+  followGetAdminUserList,
+} from "./AdminSaga/AdminQuanLyNguoiDungSaga";
 import { followGetLoginAdminApi } from "./AdminSaga/AuthAdminSaga";
 import {
   followGetBookingApi,
@@ -43,5 +46,6 @@ export function* rootSaga() {
     // Quản Lý Người Dùng
     followGetLoginAdminApi(),
     followGetAdminUserList(),
+    followGetAddYserAdminApi(),
   ]);
 }

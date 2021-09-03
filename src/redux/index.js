@@ -6,7 +6,7 @@ import QuanLyRapReducer from "./reducer/ClientReducer/QuanLyRapReducer";
 import QuanLyDatVeReducer from "./reducer/ClientReducer/QuanLyDatVeReducer";
 import QuanLyNguoiDungReducer from "./reducer/ClientReducer/QuanLyNguoiDungReducer";
 import AdminQuanLyNguoiDungReducer from "./reducer/AdminReducer/AdminQuanLyNguoiDungReducer";
-
+import AdminQuanLyRapReducer from "./reducer/AdminReducer/AdminQuanLyRapReducer";
 const middleWareSaga = createMiddleWareSaga();
 const rootReducer = combineReducers({
   QuanLyPhimReducer,
@@ -16,6 +16,7 @@ const rootReducer = combineReducers({
 
   // admin reducer
   AdminQuanLyNguoiDungReducer,
+  AdminQuanLyRapReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

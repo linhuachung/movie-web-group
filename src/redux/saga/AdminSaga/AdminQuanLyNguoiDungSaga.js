@@ -2,10 +2,12 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import Swal from "sweetalert2";
 import {
   AdminAddUserServices,
+  AdminDeleteUserServices,
   AdminGetUserListServices,
 } from "../../../services/AdminServices/AdminQuanLyNguoiDungServices";
 import {
   ADD_USER_ADMIN_SAGA_TYPE,
+  DELETE_USER_SAGA_TYPE,
   GET_USER_LIST_ADMIN_SAGA_TYPE,
   GET_USER_LIST_ADMIN_TYPE,
 } from "../../types/QuanLyNguoiDungType/AuthUser";
@@ -47,4 +49,28 @@ function* getAddUserAdminApi(action) {
 
 export function* followGetAddYserAdminApi() {
   return yield takeLatest(ADD_USER_ADMIN_SAGA_TYPE, getAddUserAdminApi);
+}
+
+// Xóa Phim
+
+function* getDeleteUserApi(action) {
+  try {
+    const res = yield call(() => AdminDeleteUserServices(action.taiKhoan));
+    if (res.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Xóa người dùng thành công",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    Swal.fire({
+      icon: "error",
+      title: `Thất bại`,
+      text: `${err.response.data.content}`,
+    });
+  }
+}
+export function* followGetDeleteUserApi() {
+  yield takeLatest(DELETE_USER_SAGA_TYPE, getDeleteUserApi);
 }

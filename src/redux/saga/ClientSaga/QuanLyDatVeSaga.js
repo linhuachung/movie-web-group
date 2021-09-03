@@ -2,10 +2,12 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import Swal from "sweetalert2";
 import {
   BookingServices,
+  CreateShowTime,
   GetListChairServices,
 } from "../../../services/ClientServices/QuanLyDatVeServices";
 import {
   BOOKING_SAGA_TYPE,
+  CREATE_SHOW_TIME_SAGA_TYPE,
   GET_LIST_CHAIR_SAGA_TYPE,
   GET_LIST_CHAIR_TYPE,
 } from "../../types/QuanLyDatVeType/QuanLyDatVeType";
@@ -56,4 +58,26 @@ function* getBookingApi(action) {
 }
 export function* followGetBookingApi() {
   return yield takeLatest(BOOKING_SAGA_TYPE, getBookingApi);
+}
+
+// Tạo Lịch Chiếu
+function* getCreateShowTimeApi(action) {
+  try {
+    const res = yield call(() => CreateShowTime(action.data));
+    if (res.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Tạo lịch chiếu thành công",
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    Swal.fire({
+      icon: "error",
+      title: `${e.response.data.content}`,
+    });
+  }
+}
+export function* followGetCreateShowTimeApi() {
+  return yield takeLatest(CREATE_SHOW_TIME_SAGA_TYPE, getCreateShowTimeApi);
 }

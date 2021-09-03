@@ -20,3 +20,16 @@ export function BookingServices(data) {
     },
   });
 }
+
+// Tạo Lịch Chiếu
+export function CreateShowTime(data) {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return axios({
+    url: `${DOMAIN}/api/QuanLyDatVe/TaoLichChieu`,
+    method: "POST",
+    data: data,
+    headers: {
+      Authorization: `Bearer ${user.accessToken}`,
+    },
+  });
+}

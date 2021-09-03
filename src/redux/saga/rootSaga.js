@@ -2,10 +2,17 @@ import { all } from "@redux-saga/core/effects";
 import {
   followGetAddYserAdminApi,
   followGetAdminUserList,
+  followGetDeleteUserApi,
 } from "./AdminSaga/AdminQuanLyNguoiDungSaga";
+import {
+  followGetAddMovieAdminApi,
+  followGetDeleteMovieApi,
+} from "./AdminSaga/AdminQuanLyPhimSaga";
+import { followGetInfoTheaterBySystemApi } from "./AdminSaga/AdminQuanLyRapSaga";
 import { followGetLoginAdminApi } from "./AdminSaga/AuthAdminSaga";
 import {
   followGetBookingApi,
+  followGetCreateShowTimeApi,
   followGetListChairApi,
 } from "./ClientSaga/QuanLyDatVeSaga";
 import {
@@ -47,5 +54,13 @@ export function* rootSaga() {
     followGetLoginAdminApi(),
     followGetAdminUserList(),
     followGetAddYserAdminApi(),
+    followGetDeleteUserApi(),
+    // Quản Lý Phim
+    followGetAddMovieAdminApi(),
+    followGetDeleteMovieApi(),
+
+    // Quản Lý Rạp
+    followGetInfoTheaterBySystemApi(),
+    followGetCreateShowTimeApi(),
   ]);
 }

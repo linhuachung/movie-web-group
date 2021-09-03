@@ -30,3 +30,12 @@ export function GetFilmShowTimeInfomationTheaterServices(maHeThongRap) {
     url: `${DOMAIN}/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=GP13`,
   });
 }
+
+// Lấy Thông Tin Cụm Rạp Theo Hệ Thống
+export function GetInfoTheaterBySystem(maHeThongRap) {
+  return axios({
+    method: "GET",
+    url: `${DOMAIN}/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`,
+    data: maHeThongRap,
+  });
+}

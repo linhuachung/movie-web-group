@@ -83,7 +83,7 @@ export const adminRouters = [
     Component: Dashboard,
   },
   {
-    path: "/admin/dashboard/booking-manager",
+    path: "/admin/dashboard/booking-manager/:maPhim",
     exact: false,
     checkLogin: true,
     Component: BookingManager,

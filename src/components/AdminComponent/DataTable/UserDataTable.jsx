@@ -4,11 +4,14 @@ import { SearchOutlined } from "@ant-design/icons";
 import Modal from "antd/lib/modal/Modal";
 import FormDataAddUser from "../FormData/FormDataAddUser";
 import { useDispatch } from "react-redux";
-import { ADD_USER_ADMIN_SAGA_TYPE } from "../../../redux/types/QuanLyNguoiDungType/AuthUser";
+import {
+  ADD_USER_ADMIN_SAGA_TYPE,
+  DELETE_USER_SAGA_TYPE,
+} from "../../../redux/types/QuanLyNguoiDungType/AuthUser";
 
 function UserDataTable(props) {
   const { user } = props;
-
+  const dispatch = useDispatch();
   const [, setSearchText] = useState();
   const [, setSearchedColumn] = useState();
   const [showFormAddUser, setShowFormAddUser] = useState(false);
@@ -31,9 +34,7 @@ function UserDataTable(props) {
           onChange={(e) =>
             setSelectedKeys(e.target.value ? [e.target.value] : [])
           }
-          onPressEnter={() =>
-            this.handleSearch(selectedKeys, confirm, dataIndex)
-          }
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{ marginBottom: 8, display: "block" }}
         />
         <Space>
@@ -177,7 +178,10 @@ function UserDataTable(props) {
         <div>
           <button
             onClick={() => {
-              console.log(user.taiKhoan);
+              dispatch({
+                type: DELETE_USER_SAGA_TYPE,
+                taiKhoan: user.taiKhoan,
+              });
             }}
             className="mx-4 bg-red-600 px-5 py-1 text-lg rounded-md text-gray-100 duration-300 hover:bg-red-400 hover:text-red-600 "
           >
@@ -194,7 +198,7 @@ function UserDataTable(props) {
     };
   });
   let userObj;
-  const dispatch = useDispatch();
+
   const handleGetUser = (userData) => {
     console.log(userData);
     userObj = userData;
@@ -225,7 +229,7 @@ function UserDataTable(props) {
       />
       {showFormAddUser ? (
         <Modal
-          title="Modal 1000px width"
+          title="Thêm Người Dùng"
           centered
           visible={showFormAddUser}
           onOk={handleAddUser}

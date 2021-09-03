@@ -20,3 +20,16 @@ export function AdminAddUserServices(user) {
     },
   });
 }
+
+// Xóa Người Dùng
+export function AdminDeleteUserServices(taiKhoan) {
+  const userToken = JSON.parse(localStorage.getItem("user"));
+  return axios({
+    url: `${DOMAIN}/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+    method: "DELETE",
+    data: taiKhoan,
+    headers: {
+      Authorization: `Bearer ${userToken.accessToken}`,
+    },
+  });
+}

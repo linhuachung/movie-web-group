@@ -10,8 +10,12 @@ function TheaterTapPannel() {
   const [tab] = useState({
     mode: "left",
   });
-  const { mode } = tab;
+  const [tabTop] = useState({
+    mode: "top",
+  });
 
+  const { mode } = tab;
+  const { modeTop } = tabTop;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +28,7 @@ function TheaterTapPannel() {
 
   return (
     <div className="theaterTab_container">
-      <Tabs defaultActiveKey="1" tabPosition={mode} className="tab_content ">
+      <Tabs defaultActiveKey="1" tabPosition={modeTop} className="tab_content ">
         {theaterList.map((company, index) => {
           return (
             <TabPane
@@ -79,7 +83,7 @@ function TheaterTapPannel() {
                         .map((film, index) => {
                           return (
                             <div className="theaterTab_movieList " key={index}>
-                              <div className="theaterTab_movieListItem">
+                              <div className="theaterTab_movieListItem item_img">
                                 <img
                                   src={film.hinhAnh}
                                   className=" h-40 w-32 filmImg"
@@ -87,33 +91,35 @@ function TheaterTapPannel() {
                                 />
                               </div>
                               <div className="theaterTab_movieListItem ml-3">
-                                <ul>
-                                  <li className=" my-2 theaterTab_movieListItem_name">
+                                <div className="movieListItem_content col-span-2">
+                                  <div>
                                     <Link
-                                      to={`chi-tiet-phim/${film.maPhim}`}
+                                      to={`/chi-tiet-phim/${film.maPhim}`}
                                       className="text-2xl text-blue-600 hover:text-red-800 filmName"
                                     >
                                       {film.tenPhim}
                                     </Link>
-                                  </li>
-                                  <li className="timeToStart row-span-3">
+                                  </div>
+                                </div>
+                                <div className="movieListItem_content row-start-2 col-start-2 row-span-2 col-span-4">
+                                  <div className="choose_time ">
                                     {film.lstLichChieuTheoPhim
-                                      ?.slice(0, 8)
-                                      .map((item, index) => {
+                                      .slice(0, 8)
+                                      .map((time, index) => {
                                         return (
                                           <Link
-                                            to={`/danh-sach-phong-ve/${company.maHeThongRap}/${item.maLichChieu}`}
-                                            className="choose_Time"
+                                            to={`/danh-sach-phong-ve/${company.maHeThongRap}/${time.maLichChieu}`}
+                                            className="Home_choose_time"
                                             key={index}
                                           >
                                             {moment(
-                                              item.ngayChieuGioChieu
+                                              time.ngayChieuGioChieu
                                             ).format("hh:mm A")}
                                           </Link>
                                         );
                                       })}
-                                  </li>
-                                </ul>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           );

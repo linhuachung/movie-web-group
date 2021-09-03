@@ -2,10 +2,20 @@ import React, { useState } from "react";
 import { Table, Space, Input, Button } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import ModalVideo from "react-modal-video";
+import Modal from "antd/lib/modal/Modal";
+import FormDataAddMovie from "../FormData/FormDataAddMovie";
+import { useDispatch } from "react-redux";
+import {
+  CREATE_MOVIE_SAGA_TYPE,
+  DELETE_MOVIE_SAGA_TYPE,
+} from "../../../redux/types/QuanLyPhimType/QuanLyPhimType";
+import { useHistory } from "react-router-dom";
 
 function MovieManagerDataTable(props) {
+  const history = useHistory();
   const { movie } = props;
   const [isOpen, setOpen] = useState(false);
+  const [showFormAddMove, setShowFormAddMove] = useState(false);
   const [, setSearchText] = useState();
   const [, setSearchedColumn] = useState();
   let searchInput;
@@ -105,7 +115,7 @@ function MovieManagerDataTable(props) {
       title: "Mã Phim",
       dataIndex: "maPhim",
       key: "maPhim",
-      with: 500,
+      with: 50,
       sorter: (a, b) => a.maPhim - b.maPhim,
 
       ellipsis: true,
@@ -174,6 +184,7 @@ function MovieManagerDataTable(props) {
       title: "Sắp Chiếu",
       dataIndex: "sapChieu",
       key: "sapChieu",
+
       sorter: (a, b) => a.sapChieu?.length - b.sapChieu?.length,
 
       filters: [
@@ -192,7 +203,7 @@ function MovieManagerDataTable(props) {
       title: "",
       dataIndex: "button",
       key: "button",
-      width: 210,
+      width: 350,
     },
   ];
 
@@ -240,17 +251,28 @@ function MovieManagerDataTable(props) {
         <div>
           <button
             onClick={() => {
-              console.log(movie.maPhim);
+              dispatch({
+                type: DELETE_MOVIE_SAGA_TYPE,
+                maPhim: movie.maPhim,
+              });
             }}
-            className="mx-4 bg-red-600 px-5 py-1 text-base rounded-md text-gray-100 duration-300 hover:bg-red-400 hover:text-red-600 "
+            className="mr-2 bg-red-600 px-5 py-1 text-base rounded-md text-gray-100 duration-300 hover:bg-red-400 hover:text-red-600 "
           >
             Xóa
           </button>
           <button
             // onClick={expandedRowRender}
-            className=" bg-green-600 px-5 py-1 text-base rounded-md text-gray-100 duration-300 hover:bg-green-400 hover:text-green-600"
+            className=" mr-2 bg-green-600 px-5 py-1 text-base rounded-md text-gray-100 duration-300 hover:bg-green-400 hover:text-green-600"
           >
             Sửa
+          </button>
+          <button
+            onClick={() => {
+              history.push(`/admin/dashboard/booking-manager/${movie.maPhim}`);
+            }}
+            className=" bg-blue-600 px-5 py-1 text-base rounded-md text-gray-100 duration-300 hover:bg-blue-400 hover:text-blue-600"
+          >
+            Tạo Lịch Chiếu
           </button>
         </div>
       ),
@@ -258,12 +280,27 @@ function MovieManagerDataTable(props) {
     };
   });
 
+  let dataMovieObj;
+  const movieData = (value) => {
+    // console.log("data movie: ", value);
+    dataMovieObj = value;
+    return dataMovieObj;
+  };
+  const dispatch = useDispatch();
+  const handleSubmitAddMovie = () => {
+    console.log("dataMovieObj: ", dataMovieObj);
+    dispatch({
+      type: CREATE_MOVIE_SAGA_TYPE,
+      data: dataMovieObj,
+    });
+  };
+
   return (
     <div className="my-5">
       <Space style={{ marginBottom: 10 }}>
         <button
           onClick={() => {
-            console.log(1);
+            setShowFormAddMove((show) => !show);
           }}
           className=" bg-blue-600 px-5 py-1 text-lg rounded-md text-gray-100 duration-300 hover:bg-blue-400 hover:text-blue-600 "
         >
@@ -275,6 +312,18 @@ function MovieManagerDataTable(props) {
         dataSource={data}
         pagination={{ pageSize: 12 }}
       />
+      {showFormAddMove ? (
+        <Modal
+          title="Thêm phim"
+          centered
+          visible={showFormAddMove}
+          onOk={handleSubmitAddMovie}
+          onCancel={() => setShowFormAddMove((open) => !open)}
+          width={1000}
+        >
+          <FormDataAddMovie movieData={movieData} />
+        </Modal>
+      ) : null}
     </div>
   );
 }

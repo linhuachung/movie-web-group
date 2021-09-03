@@ -23,13 +23,6 @@ function FormDataAddUser(props) {
     });
     handleGetUser(user);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch({
-      type: ADD_USER_ADMIN_SAGA_TYPE,
-      user: user,
-    });
-  };
 
   return (
     <div>
@@ -46,9 +39,9 @@ function FormDataAddUser(props) {
           name="taiKhoan"
           rules={[
             {
-              //   required: true,
+              required: true,
               message: "Tài khoản người dùng không được bỏ trống!",
-              //   whitespace: true,
+              whitespace: true,
             },
           ]}
           place
@@ -64,12 +57,11 @@ function FormDataAddUser(props) {
           name="hoTen"
           rules={[
             {
-              //   required: true,
+              required: true,
               message: "Họ tên người dùng không được bỏ trống!",
-              //   whitespace: true,
+              whitespace: true,
             },
           ]}
-          place
         >
           <Input
             placeholder="Nhập họ tên người dùng..."
@@ -82,9 +74,9 @@ function FormDataAddUser(props) {
           label="Mật Khẩu"
           rules={[
             {
-              //   required: true,
+              required: true,
               message: "Mật Khẩu người dùng không được bỏ trống!",
-              //   whitespace: true,
+              whitespace: true,
             },
           ]}
         >
@@ -103,7 +95,7 @@ function FormDataAddUser(props) {
               message: "E-mail! không dúng định dạng",
             },
             {
-              //   required: true,
+              required: true,
               message: "E-mail! không được bỏ trống!",
             },
           ]}
@@ -120,9 +112,9 @@ function FormDataAddUser(props) {
           label="Số Điện Thoại"
           rules={[
             {
-              //   required: true,
+              required: true,
               message: "Số Điện thoại không được bỏ trống!",
-              //   whitespace: true,
+              whitespace: true,
             },
           ]}
         >
@@ -137,7 +129,7 @@ function FormDataAddUser(props) {
           label="Mã Loại Người Dùng"
           rules={[
             {
-              //   required: true,
+              required: true,
               message: "Please pick an item!",
             },
           ]}

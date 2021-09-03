@@ -21,18 +21,6 @@ function SideBarAdmin() {
           </li>
           <li className="mr-3 flex-1">
             <NavLink
-              to="/admin/dashboard/booking-manager"
-              className="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500"
-              activeClassName="  border-b-2 border-purple-500"
-            >
-              <i className="fa fa-envelope pr-0 md:pr-3" />
-              <span className="pb-1 md:pb-0 text-xs md:text-base text-gray-600 md:text-gray-400 block md:inline-block">
-                Quản Lý Đặt Vé
-              </span>
-            </NavLink>
-          </li>
-          <li className="mr-3 flex-1">
-            <NavLink
               to="/admin/dashboard/user-manager"
               className="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500"
               activeClassName="  border-b-2 border-purple-500"

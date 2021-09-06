@@ -80,15 +80,24 @@ function HeaderBooking() {
           </nav>
         </div>
         <div className="nav_right">
-          {user === null ? (
+          {user !== null ? (
+            user?.maLoaiNguoiDung === "QuanTri" ? (
+              <Link
+                to="/client/dang-nhap"
+                className="nav_Button hover:text-white duration-500"
+              >
+                Đăng nhập
+              </Link>
+            ) : (
+              <IconAfterLogin />
+            )
+          ) : (
             <Link
               to="/client/dang-nhap"
               className="nav_Button hover:text-white duration-500"
             >
               Đăng nhập
             </Link>
-          ) : (
-            <IconAfterLogin />
           )}
         </div>
       </div>

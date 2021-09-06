@@ -21,10 +21,6 @@ function FormDataAddMovie(props) {
       dangChieu: false,
       sapChieu: false,
     },
-
-    onSubmit: (value) => {
-      console.log(value);
-    },
   });
 
   const handleDateChange = (value) => {

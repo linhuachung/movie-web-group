@@ -68,6 +68,106 @@
     }
 
 
+    /* booking */
+    .booking_container_flex {
+        /* @apply flex-col */
+    }
+
+    .booking_container {
+        @apply px-0 w-4/5
+    }
+
+    .booking_container .booking_content {
+        @apply w-5/6 m-auto
+    }
+
+    .booking_container .booking_logo img {
+        @apply w-10
+    }
+
+    .booking_container .booking_item_title {
+        @apply p-0 pt-5 w-full
+    }
+
+    .booking_container .item_info .item_info_theater {
+        @apply text-lg
+    }
+
+    .booking_container .item_info .item_info_filmShowtime {
+        @apply text-sm
+    }
+
+    .booking_container .item_info .time_code {
+        @apply text-xl
+    }
+
+    .booking_container .item_img {
+        @apply w-full
+    }
+
+    .booking_container .item_listChair {
+        @apply gap-2 w-3/4 my-3
+    }
+
+    .booking_container .item_listChair .icon {
+        @apply text-3xl
+    }
+
+    .booking_container .item_listChair .icon_disable {
+        @apply text-3xl
+    }
+
+    .booking_container .chair_description {
+        @apply w-5/6 justify-between
+    }
+
+    .booking_container .chair_info {
+        @apply m-0 mt-4
+    }
+
+    .booking_container .icon_disable {
+        @apply text-2xl
+    }
+
+    .booking_checkoutContainer {
+        @apply w-1/4
+    }
+
+    .booking_checkoutContainer .booking_itemTop_item1 .film_itemName {
+        @apply text-xl
+    }
+
+    .booking_checkoutContainer .contentcinema .pcinema_binding,
+    .hour_binding {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemTop_item3 input {
+        @apply text-sm
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .item_warning {
+        @apply text-base
+    }
+
+    .booking_checkoutContainer .booking_itemBottom .btn_booking {
+        @apply text-xl py-3
+    }
+
+    .booking_checkoutContainer .booking_itemTop_item2 .item_chair,
+    ._item_chairValue {
+        @apply text-lg
+    }
+
+    .booking_checkoutContainer .booking_itemTop_item2 .item2_chairCheckout,
+    .item2_Cost {
+        @apply text-base
+    }
+
+    .booking_checkoutContainer .item4_discount {
+        @apply text-lg
+    }
+
 
 }
 
@@ -167,11 +267,11 @@
     }
 
     .booking_container .item_listChair .icon {
-        @apply text-3xl
+        @apply text-2xl
     }
 
     .booking_container .item_listChair .icon_disable {
-        @apply text-3xl
+        @apply text-2xl
     }
 
     .booking_container .chair_description {

@@ -102,7 +102,7 @@ function Header() {
             >
               Đăng nhập
             </Link>
-          ) : user.maLoaiNguoiDung === "khachHang" ? (
+          ) : user.maLoaiNguoiDung === "KhachHang" ? (
             <IconAfterLogin />
           ) : (
             <Link

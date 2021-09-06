@@ -5,14 +5,12 @@ import { GET_MOVIE_LIST_SAGA_TYPE } from "../../../redux/types/QuanLyPhimType/Qu
 
 function MovieManager() {
   const dispatch = useDispatch();
+  const movie = useSelector((state) => state.QuanLyPhimReducer.movieList);
   useEffect(() => {
     dispatch({
       type: GET_MOVIE_LIST_SAGA_TYPE,
     });
-  }, [dispatch]);
-
-  const movie = useSelector((state) => state.QuanLyPhimReducer.movieList);
-
+  });
   return (
     <div className="main-content flex-1 from-gray-600 to-gray-800 mt-12 md:mt-2 pb-24 md:pb-5">
       <div className=" pt-3">

@@ -1,4 +1,3 @@
-import { InputNumber } from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -7,9 +6,11 @@ import BookingContent from "../../../components/ClientComponents/BookingContent/
 import { GET_LIST_CHAIR_SAGA_TYPE } from "../../../redux/types/QuanLyDatVeType/QuanLyDatVeType";
 import { GET_FILM_SHOWTIME_INFOMATION_THEATER_SAGA_TYPE } from "../../../redux/types/QuanLyRapType/QuanLyRapType";
 
-function Booking(props) {
+function Booking() {
   const { maLichChieu, maHeThongRap } = useParams();
-
+  let listChairChoose = useSelector(
+    (state) => state.QuanLyDatVeReducer.isChooseChair
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
@@ -26,29 +27,18 @@ function Booking(props) {
   const theater = useSelector(
     (state) => state.QuanLyRapReducer.infoMovieInTheater
   );
-  let danhSachVe = [];
+
   let arr = {
     maLichChieu: maLichChieu,
-    danhSachVe: danhSachVe,
+    danhSachVe: listChairChoose,
   };
-
   const chair = (chair) => {
     if (chair) {
-      const data = danhSachVe.some((item) => item.maGhe === chair.maGhe);
-      if (!data) {
-        danhSachVe.push({ maGhe: chair.maGhe, giaVe: chair.giaVe });
-        // console.log(danhSachVe);
-      } else {
-        danhSachVe = danhSachVe.filter((item) => item.maGhe !== chair.maGhe);
-        // console.log(danhSachVe);
-      }
-      arr = { ...arr, danhSachVe: danhSachVe };
       listChair.danhSachGhe.forEach((choice) => {
         if (choice.maGhe === chair.maGhe) {
           choice.dangChon = !choice.dangChon;
         }
       });
-      console.log(danhSachVe);
     }
     return arr;
   };

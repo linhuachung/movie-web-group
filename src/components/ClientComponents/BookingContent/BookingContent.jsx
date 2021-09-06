@@ -1,19 +1,32 @@
 import { faCouch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
+import Countdown from "react-countdown";
+import { useDispatch } from "react-redux";
+import { IS_BOOKING } from "../../../redux/types/QuanLyDatVeType/QuanLyDatVeType";
 
 function BookingContent(props) {
-  const { listChair, theater, setChairChoose } = props;
+  const dispatch = useDispatch();
+  const { listChair, theater } = props;
   const { chair } = props;
   const [choose, setChoose] = useState(false);
-
-  const [minutes] = useState(5);
-  const [seconds] = useState(60);
 
   const handleChoiceChair = (value) => {
     chair({ maGhe: value.maGhe, giaVe: value.giaVe });
     setChoose((choose) => !choose);
-    // setChairChoose(chair({ maGhe: value.maGhe, giaVe: value.giaVe }));
+    dispatch({
+      type: IS_BOOKING,
+      data: { maGhe: value.maGhe, tenGhe: value.tenGhe, giaVe: value.giaVe },
+    });
+  };
+  let time = Date.now();
+
+  const renderer = ({ minutes, seconds }) => {
+    return (
+      <span>
+        {minutes}:{seconds}
+      </span>
+    );
   };
 
   return (
@@ -53,7 +66,13 @@ function BookingContent(props) {
               </p>
             </div>
             <div className="text-center text-4xl text-red-400 time_code">
-              {minutes}:{seconds}
+              <Countdown
+                date={time + 300000}
+                renderer={renderer}
+                onComplete={() => {
+                  window.location.reload(true);
+                }}
+              />
             </div>
           </div>
         </div>
@@ -66,29 +85,34 @@ function BookingContent(props) {
               return (
                 <div key={index}>
                   {chair.taiKhoanNguoiDat === null ? (
-                    <FontAwesomeIcon
-                      onClick={() => handleChoiceChair(chair)}
-                      icon={faCouch}
-                      className={
-                        choose
-                          ? chair.dangChon === true
+                    <button onClick={() => handleChoiceChair(chair)}>
+                      <FontAwesomeIcon
+                        icon={faCouch}
+                        className={
+                          choose
+                            ? chair.dangChon === true
+                              ? " text-green-400  icon "
+                              : chair.loaiGhe === "Thuong"
+                              ? " text-gray-300  icon "
+                              : "text-yellow-600 icon"
+                            : chair.dangChon === true
                             ? " text-green-400  icon "
                             : chair.loaiGhe === "Thuong"
                             ? " text-gray-300  icon "
                             : "text-yellow-600 icon"
-                          : chair.dangChon === true
-                          ? " text-green-400  icon "
-                          : chair.loaiGhe === "Thuong"
-                          ? " text-gray-300  icon "
-                          : "text-yellow-600 icon"
-                      }
-                    />
+                        }
+                      />
+                      {chair.tenGhe}
+                    </button>
                   ) : (
-                    <FontAwesomeIcon
-                      icon={faCouch}
-                      key={index}
-                      className="text-gray-700 text-4xl cursor-not-allowed hover:none icon_disable"
-                    />
+                    <button onClick={() => handleChoiceChair(chair)}>
+                      <FontAwesomeIcon
+                        icon={faCouch}
+                        key={index}
+                        className="text-gray-700 text-4xl cursor-not-allowed hover:none icon_disable"
+                      />
+                      {chair.tenGhe}
+                    </button>
                   )}
                 </div>
               );

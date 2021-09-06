@@ -897,11 +897,12 @@ footer {
 }
 
 .booking_container .item_listChair {
-    @apply grid grid-cols-10 gap-4 m-auto w-1/2;
+    @apply grid gap-4 m-auto w-3/4;
+    grid-template-columns: repeat(16, 1fr);
 }
 
 .booking_container .icon {
-    @apply text-4xl cursor-pointer duration-300
+    @apply text-4xl duration-300
 }
 
 .booking_container .icon:hover {
@@ -946,7 +947,12 @@ footer {
 
 .booking_checkoutContainer .booking_itemTop_item2 .item_chair,
 ._item_chairValue {
-    @apply text-base text-red-700
+    @apply text-xl text-red-700
+}
+
+.booking_checkoutContainer .booking_itemTop_item2 .item2_chairCheckout,
+.item2_Cost {
+    @apply text-lg text-blue-800
 }
 
 .booking_checkoutContainer .booking_itemTop_item3 .item3_input {
@@ -965,6 +971,13 @@ footer {
     @apply bg-black
 }
 
+.booking_checkoutContainer .item4_discount {
+    @apply text-xl
+}
+
+.booking_checkoutContainer .item4_discount .item4_discount_cost {
+    @apply text-red-700
+}
 
 .booking_checkoutContainer .booking_itemBottom .item_warning {
     @apply text-center text-lg text-red-800 font-bold

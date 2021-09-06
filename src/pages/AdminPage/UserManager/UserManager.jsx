@@ -7,7 +7,7 @@ function UserManager() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({ type: GET_USER_LIST_ADMIN_SAGA_TYPE });
-  }, [dispatch]);
+  });
 
   const user = useSelector(
     (state) => state.AdminQuanLyNguoiDungReducer.adminUserList

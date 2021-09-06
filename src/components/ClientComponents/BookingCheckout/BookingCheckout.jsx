@@ -1,20 +1,67 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { BOOKING_SAGA_TYPE } from "../../../redux/types/QuanLyDatVeType/QuanLyDatVeType";
+import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
 function BookingCheckout(props) {
-  const { listChair, chairChoose } = props;
-  const { chair, arr } = props;
-  console.log("chairChoose ", chairChoose);
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
+  const history = useHistory();
+  const { listChair } = props;
+  const { arr } = props;
+  console.log("Danh sách vé đặt: ", arr);
   const dispatch = useDispatch();
   const handleBooking = () => {
-    dispatch({
-      type: BOOKING_SAGA_TYPE,
-      data: arr,
-    });
+    if (arr.danhSachVe.length !== 0) {
+      if (user) {
+        if (user.maLoaiNguoiDung === "KhachHang") {
+          dispatch({
+            type: BOOKING_SAGA_TYPE,
+            data: arr,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Đặt vé không thành công",
+            text: "Vui lòng đăng nhập bằng tài khoản người dùng để tiếp tục đặt vé",
+            footer:
+              '<a href="/client/dang-ky">Đăng ký nếu bạn chưa có tài khoản</a>',
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Đăng nhập",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              setTimeout(() => {
+                history.push("/client/dang-nhap");
+              }, 1000);
+            }
+          });
+        }
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Đặt vé không thành công",
+          text: "Vui lòng đăng nhập để tiếp tục đặt vé",
+          footer:
+            '<a href="/client/dang-ky">Đăng ký nếu bạn chưa có tài khoản</a>',
+          confirmButtonColor: "#3085d6",
+          confirmButtonText: "Đăng nhập",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            setTimeout(() => {
+              history.push("/client/dang-nhap");
+            }, 1000);
+          }
+        });
+      }
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Đặt vé không thành công",
+        text: "Vui lòng chọn ghế ",
+      });
+    }
   };
-
   return (
     <div className="booking_checkoutContainer">
       <div className="booking_checkoutContent">
@@ -32,18 +79,6 @@ function BookingCheckout(props) {
                 {listChair.thongTinPhim?.gioChieu}-
                 {listChair.thongTinPhim?.tenRap}
               </div>
-            </div>
-          </div>
-          <div className="booking_itemTop_item2">
-            <div className="item_chair">
-              <span>Ghế</span>
-            </div>
-            <div className="_item_chairValue">
-              <span>
-                {/* {chairChoose.danhSachVe.map((item, index) => {
-                  return <span key={index}>{item.maGhe}</span>;
-                })} */}
-              </span>
             </div>
           </div>
           <div className="booking_itemTop_item3">
@@ -70,6 +105,43 @@ function BookingCheckout(props) {
                 className="w-full px-4 py-3 rounded-md dark:border-coolGray-700 dark:bg-coolGray-900 dark:text-coolGray-100"
                 required
               />
+            </div>
+          </div>
+          <div className="booking_itemTop_item2">
+            <div className="item_chair">
+              <span>Ghế</span>
+            </div>
+            <div className="_item_chairValue">
+              <span>Giá Vé</span>
+            </div>
+          </div>
+          {arr.danhSachVe.map((item, index) => {
+            return (
+              <div className="booking_itemTop_item2" key={index}>
+                <div className="item_chair">
+                  <span className="item2_chairCheckout">{item.tenGhe}</span>
+                </div>
+                <div className="_item_chairValue">
+                  <span className="item2_Cost">
+                    {item.giaVe.toLocaleString()} VNĐ
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+          <div className=" item4_discount flex justify-between">
+            <div>
+              <p>Tổng Tiền</p>
+            </div>
+            <div className="item4_discount_cost">
+              <span>
+                {arr.danhSachVe
+                  ?.reduce((cost, chair) => {
+                    return (cost += chair.giaVe);
+                  }, 0)
+                  .toLocaleString()}{" "}
+              </span>
+              <span>VNĐ</span>
             </div>
           </div>
         </div>

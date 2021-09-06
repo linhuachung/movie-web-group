@@ -1,29 +1,21 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { ADD_USER_ADMIN_SAGA_TYPE } from "../../../redux/types/QuanLyNguoiDungType/AuthUser";
+import React from "react";
 import { Form, Input, Radio } from "antd";
+import { useFormik } from "formik";
 function FormDataAddUser(props) {
   const { handleGetUser } = props;
-  const dispatch = useDispatch();
-
-  let [user, setUser] = useState({
-    taiKhoan: "",
-    matKhau: "",
-    email: "",
-    soDt: "",
-    maNhom: "GP11",
-    maLoaiNguoiDung: "",
-    hoTen: "",
+  const formik = useFormik({
+    initialValues: {
+      taiKhoan: "",
+      matKhau: "",
+      email: "",
+      soDt: "",
+      maNhom: "GP11",
+      maLoaiNguoiDung: "",
+      hoTen: "",
+    },
   });
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setUser({
-      ...user,
-      [name]: value,
-    });
-    handleGetUser(user);
-  };
 
+  handleGetUser(formik.values);
   return (
     <div>
       <Form
@@ -49,7 +41,7 @@ function FormDataAddUser(props) {
           <Input
             placeholder="Nhập tài khoản người dùng..."
             name="taiKhoan"
-            onChange={(e) => handleChange(e)}
+            onChange={formik.handleChange}
           />
         </Form.Item>
         <Form.Item
@@ -66,7 +58,7 @@ function FormDataAddUser(props) {
           <Input
             placeholder="Nhập họ tên người dùng..."
             name="hoTen"
-            onChange={(e) => handleChange(e)}
+            onChange={formik.handleChange}
           />
         </Form.Item>
         <Form.Item
@@ -83,7 +75,7 @@ function FormDataAddUser(props) {
           <Input.Password
             placeholder="Nhập mật khẩu người dùng..."
             name="matKhau"
-            onChange={(e) => handleChange(e)}
+            onChange={formik.handleChange}
           />
         </Form.Item>
         <Form.Item
@@ -103,7 +95,7 @@ function FormDataAddUser(props) {
           <Input
             name="email"
             placeholder="Nhập email người dùng..."
-            onChange={(e) => handleChange(e)}
+            onChange={formik.handleChange}
           />
         </Form.Item>
 
@@ -121,7 +113,7 @@ function FormDataAddUser(props) {
           <Input
             name="soDt"
             placeholder="Nhập số điện thoại người dùng..."
-            onChange={(e) => handleChange(e)}
+            onChange={formik.handleChange}
           />
         </Form.Item>
         <Form.Item
@@ -138,14 +130,14 @@ function FormDataAddUser(props) {
             <Radio
               value="KhachHang"
               name="maLoaiNguoiDung"
-              onChange={(e) => handleChange(e)}
+              onChange={formik.handleChange}
             >
               Khách Hàng
             </Radio>
             <Radio
               value="QuanTri"
               name="maLoaiNguoiDung"
-              onChange={(e) => handleChange(e)}
+              onChange={formik.handleChange}
             >
               Quản Trị
             </Radio>

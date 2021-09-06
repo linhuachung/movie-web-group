@@ -168,7 +168,6 @@ function UserDataTable(props) {
       key: "button",
     },
   ];
-
   let data = [];
   data = user.map((user, index) => {
     return {
@@ -200,7 +199,6 @@ function UserDataTable(props) {
   let userObj;
 
   const handleGetUser = (userData) => {
-    console.log(userData);
     userObj = userData;
     return userObj;
   };

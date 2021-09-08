@@ -7,7 +7,10 @@ import { useDispatch } from "react-redux";
 import {
   ADD_USER_ADMIN_SAGA_TYPE,
   DELETE_USER_SAGA_TYPE,
+  FIND_USER_ADMIN_TYPE,
 } from "../../../redux/types/QuanLyNguoiDungType/AuthUser";
+import FormEditUser from "../FormEdit/FormEditUser";
+import { EDIT_USER_ADMIN_SAGA_TYPE } from "./../../../redux/types/QuanLyNguoiDungType/AuthUser";
 
 function UserDataTable(props) {
   const { user } = props;
@@ -15,6 +18,7 @@ function UserDataTable(props) {
   const [, setSearchText] = useState();
   const [, setSearchedColumn] = useState();
   const [showFormAddUser, setShowFormAddUser] = useState(false);
+  const [showFormEditUser, setShowFormEditUser] = useState(false);
   let searchInput;
 
   const getColumnSearchProps = (dataIndex) => ({
@@ -134,8 +138,8 @@ function UserDataTable(props) {
     },
     {
       title: "Số Điện Thoại",
-      dataIndex: "soDT",
-      key: "soDT",
+      dataIndex: "soDt",
+      key: "soDt",
       sorter: (a, b) => a.soDT?.length - b.soDT?.length,
     },
     {
@@ -187,7 +191,13 @@ function UserDataTable(props) {
             Xóa
           </button>
           <button
-            // onClick={expandedRowRender}
+            onClick={() => {
+              dispatch({
+                type: FIND_USER_ADMIN_TYPE,
+                data: user,
+              });
+              setShowFormEditUser((open) => !open);
+            }}
             className=" bg-green-600 px-5 py-1 text-lg rounded-md text-gray-100 duration-300 hover:bg-green-400 hover:text-green-600"
           >
             Sửa
@@ -201,6 +211,13 @@ function UserDataTable(props) {
   const handleGetUser = (userData) => {
     userObj = userData;
     return userObj;
+  };
+
+  let userEdit;
+
+  const handleGetUserEdit = (userData) => {
+    userEdit = userData;
+    return userEdit;
   };
   const handleAddUser = () => {
     dispatch({
@@ -235,6 +252,28 @@ function UserDataTable(props) {
           width={1000}
         >
           <FormDataAddUser handleGetUser={handleGetUser} />
+        </Modal>
+      ) : null}
+      {showFormEditUser ? (
+        <Modal
+          title="Sửa Người Dùng"
+          centered
+          visible={showFormEditUser}
+          onOk={() => {
+            console.log(userEdit);
+            dispatch({
+              type: EDIT_USER_ADMIN_SAGA_TYPE,
+              user: userEdit,
+            });
+            setTimeout(() => {
+              setShowFormEditUser((open) => !open);
+            }, 1000);
+          }}
+          onCancel={() => setShowFormEditUser((open) => !open)}
+          width={1000}
+          // getIdUserForForm={idUser}
+        >
+          <FormEditUser handleGetUserEdit={handleGetUserEdit} />
         </Modal>
       ) : null}
     </div>

@@ -22,3 +22,15 @@ export function AdminDeleteMovieServices(maPhim) {
     },
   });
 }
+// Sửa phim
+export function AdminEditMovieServices(movie) {
+  const userToken = JSON.parse(localStorage.getItem("user"));
+  return axios({
+    url: `${DOMAIN}/api/QuanLyPhim/CapNhatPhimUpload`,
+    method: "POST",
+    data: movie,
+    headers: {
+      Authorization: `Bearer ${userToken.accessToken}`,
+    },
+  });
+}

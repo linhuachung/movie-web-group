@@ -8,14 +8,18 @@ import { useDispatch } from "react-redux";
 import {
   CREATE_MOVIE_SAGA_TYPE,
   DELETE_MOVIE_SAGA_TYPE,
+  EDIT_MOVIE_SAGA_TYPE,
+  EDIT_MOVIE_TYPE,
 } from "../../../redux/types/QuanLyPhimType/QuanLyPhimType";
 import { useHistory } from "react-router-dom";
+import FormEditMovie from "../FormEdit/FormEditMovie";
 
 function MovieManagerDataTable(props) {
   const history = useHistory();
   const { movie } = props;
   const [isOpen, setOpen] = useState(false);
-  const [showFormAddMove, setShowFormAddMove] = useState(false);
+  const [showFormAddMovie, setShowFormAddMovie] = useState(false);
+  const [showFormEditMovie, setShowFormEditMovie] = useState(false);
   const [, setSearchText] = useState();
   const [, setSearchedColumn] = useState();
   let searchInput;
@@ -206,7 +210,11 @@ function MovieManagerDataTable(props) {
       width: 350,
     },
   ];
-
+  let movieEdit;
+  const DataMovieEdit = (value) => {
+    movieEdit = value;
+    return movieEdit;
+  };
   let data = [];
   data = movie.map((movie, index) => {
     return {
@@ -261,7 +269,13 @@ function MovieManagerDataTable(props) {
             Xóa
           </button>
           <button
-            // onClick={expandedRowRender}
+            onClick={() => {
+              setShowFormEditMovie((open) => !open);
+              dispatch({
+                type: EDIT_MOVIE_TYPE,
+                movie: movie,
+              });
+            }}
             className=" mr-2 bg-green-600 px-5 py-1 text-base rounded-md text-gray-100 duration-300 hover:bg-green-400 hover:text-green-600"
           >
             Sửa
@@ -282,10 +296,10 @@ function MovieManagerDataTable(props) {
 
   let dataMovieObj;
   const movieData = (value) => {
-    // console.log("data movie: ", value);
     dataMovieObj = value;
     return dataMovieObj;
   };
+
   const dispatch = useDispatch();
   const handleSubmitAddMovie = () => {
     console.log("dataMovieObj: ", dataMovieObj);
@@ -300,7 +314,7 @@ function MovieManagerDataTable(props) {
       <Space style={{ marginBottom: 10 }}>
         <button
           onClick={() => {
-            setShowFormAddMove((show) => !show);
+            setShowFormAddMovie((show) => !show);
           }}
           className=" bg-blue-600 px-5 py-1 text-lg rounded-md text-gray-100 duration-300 hover:bg-blue-400 hover:text-blue-600 "
         >
@@ -312,16 +326,34 @@ function MovieManagerDataTable(props) {
         dataSource={data}
         pagination={{ pageSize: 12 }}
       />
-      {showFormAddMove ? (
+      {showFormAddMovie ? (
         <Modal
           title="Thêm phim"
           centered
-          visible={showFormAddMove}
+          visible={showFormAddMovie}
           onOk={handleSubmitAddMovie}
-          onCancel={() => setShowFormAddMove((open) => !open)}
+          onCancel={() => setShowFormAddMovie((open) => !open)}
           width={1000}
         >
           <FormDataAddMovie movieData={movieData} />
+        </Modal>
+      ) : null}
+      {showFormEditMovie ? (
+        <Modal
+          title="Sửa phim"
+          centered
+          visible={showFormEditMovie}
+          onOk={() => {
+            console.log(movieEdit);
+            dispatch({
+              type: EDIT_MOVIE_SAGA_TYPE,
+              movie: movieEdit,
+            });
+          }}
+          onCancel={() => setShowFormEditMovie((open) => !open)}
+          width={1000}
+        >
+          <FormEditMovie DataMovieEdit={DataMovieEdit} />
         </Modal>
       ) : null}
     </div>

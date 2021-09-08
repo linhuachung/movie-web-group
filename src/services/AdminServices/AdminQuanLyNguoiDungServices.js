@@ -33,3 +33,16 @@ export function AdminDeleteUserServices(taiKhoan) {
     },
   });
 }
+
+// Sửa Người Dùng
+export function AdminEditUserServices(user) {
+  const userToken = JSON.parse(localStorage.getItem("user"));
+  return axios({
+    url: `${DOMAIN}/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+    method: "POST",
+    data: user,
+    headers: {
+      Authorization: `Bearer ${userToken.accessToken}`,
+    },
+  });
+}

@@ -3,10 +3,12 @@ import {
   followGetAddYserAdminApi,
   followGetAdminUserList,
   followGetDeleteUserApi,
+  followGetEditUserApi,
 } from "./AdminSaga/AdminQuanLyNguoiDungSaga";
 import {
   followGetAddMovieAdminApi,
   followGetDeleteMovieApi,
+  followGetEditMovieApi,
 } from "./AdminSaga/AdminQuanLyPhimSaga";
 import { followGetInfoTheaterBySystemApi } from "./AdminSaga/AdminQuanLyRapSaga";
 import { followGetLoginAdminApi } from "./AdminSaga/AuthAdminSaga";
@@ -55,9 +57,11 @@ export function* rootSaga() {
     followGetAdminUserList(),
     followGetAddYserAdminApi(),
     followGetDeleteUserApi(),
+    followGetEditUserApi(),
     // Quản Lý Phim
     followGetAddMovieAdminApi(),
     followGetDeleteMovieApi(),
+    followGetEditMovieApi(),
 
     // Quản Lý Rạp
     followGetInfoTheaterBySystemApi(),

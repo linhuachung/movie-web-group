@@ -3,11 +3,13 @@ import Swal from "sweetalert2";
 import {
   AdminAddUserServices,
   AdminDeleteUserServices,
+  AdminEditUserServices,
   AdminGetUserListServices,
 } from "../../../services/AdminServices/AdminQuanLyNguoiDungServices";
 import {
   ADD_USER_ADMIN_SAGA_TYPE,
   DELETE_USER_SAGA_TYPE,
+  EDIT_USER_ADMIN_SAGA_TYPE,
   GET_USER_LIST_ADMIN_SAGA_TYPE,
   GET_USER_LIST_ADMIN_TYPE,
 } from "../../types/QuanLyNguoiDungType/AuthUser";
@@ -51,7 +53,7 @@ export function* followGetAddYserAdminApi() {
   return yield takeLatest(ADD_USER_ADMIN_SAGA_TYPE, getAddUserAdminApi);
 }
 
-// Xóa Phim
+// Xóa người dùng
 
 function* getDeleteUserApi(action) {
   try {
@@ -73,4 +75,28 @@ function* getDeleteUserApi(action) {
 }
 export function* followGetDeleteUserApi() {
   yield takeLatest(DELETE_USER_SAGA_TYPE, getDeleteUserApi);
+}
+
+// Sửa người dùng
+
+function* getEditUserApi(action) {
+  try {
+    const res = yield call(() => AdminEditUserServices(action.user));
+    if (res.status === 200) {
+      Swal.fire({
+        icon: "success",
+        title: "Cập nhật người dùng thành công",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    Swal.fire({
+      icon: "error",
+      title: `Thất bại`,
+      text: `${err.response.data.content}`,
+    });
+  }
+}
+export function* followGetEditUserApi() {
+  yield takeLatest(EDIT_USER_ADMIN_SAGA_TYPE, getEditUserApi);
 }

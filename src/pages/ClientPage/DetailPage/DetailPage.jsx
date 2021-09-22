@@ -27,8 +27,6 @@ function DetailPage() {
   const filmShowtime = useSelector(
     (state) => state.QuanLyRapReducer.filmShowtime.heThongRapChieu
   );
-  console.log(filmShowtime);
-
   return (
     <div>
       <BannerDetailpage detailMovie={detailMovie} />

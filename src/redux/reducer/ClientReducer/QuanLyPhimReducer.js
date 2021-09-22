@@ -16,7 +16,6 @@ const QuanLyPhimReducer = (state = initialState, action) => {
     case GET_DETAIL_MOVIE_TYPE: {
       return { ...state, detailMovie: action.data.content };
     }
-
     default: {
       return state;
     }
